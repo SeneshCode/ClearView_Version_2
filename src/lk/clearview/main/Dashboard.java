@@ -11,80 +11,93 @@ import com.formdev.flatlaf.FlatLightLaf;
 import com.formdev.flatlaf.extras.FlatSVGIcon;
 import com.formdev.flatlaf.themes.FlatMacDarkLaf;
 import com.formdev.flatlaf.themes.FlatMacLightLaf;
+import java.awt.BorderLayout;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.LookAndFeel;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import lk.clearview.main.components.LinkSlide;
 import lk.clearview.main.constance.Variable;
+import lk.clearview.main.panel.ThemePanel;
+import lk.clearview.part.senesh.panel.ManagePatient;
 
 /**
  *
  * @author USER
  */
 public class Dashboard extends javax.swing.JFrame {
-
+    
+    public static Dashboard DASHBOARD;
+    
     protected LinkSlide slide1 = new LinkSlide(UIManager.getString("DASHBOARD"), Variable.SLIDE_ICON_SIZE, Variable.SLIDE_ICON_SIZE) {
         @Override
         public void setCommand() {
-
+            setDashboard();
+            chageClickPanel(getjPanel1());
         }
+
         @Override
         public void initial() {
-            setToolTipText("");
+            setToolTipText("Dashboard");
         }
     };
     protected LinkSlide slide2 = new LinkSlide(UIManager.getString("LIST"), Variable.SLIDE_ICON_SIZE, Variable.SLIDE_ICON_SIZE) {
         @Override
         public void setCommand() {
-
+            chageClickPanel(getjPanel1());
+            changeView(new ManagePatient());
         }
+
         @Override
         public void initial() {
-            setToolTipText("");
+            setToolTipText("Manage Patient");
         }
     };
     protected LinkSlide slide3 = new LinkSlide(UIManager.getString("EDIT"), Variable.SLIDE_ICON_SIZE, Variable.SLIDE_ICON_SIZE) {
         @Override
         public void setCommand() {
-
+            chageClickPanel(getjPanel1());
         }
     };
     protected LinkSlide slide4 = new LinkSlide(UIManager.getString("CALANDER"), Variable.SLIDE_ICON_SIZE, Variable.SLIDE_ICON_SIZE) {
         @Override
         public void setCommand() {
-
+            chageClickPanel(getjPanel1());
         }
+
         @Override
         public void initial() {
             setToolTipText("");
         }
     };
-    protected LinkSlide slide5 = new LinkSlide("lk/clearview/main/resources/dashboard.svg", Variable.SLIDE_ICON_SIZE, Variable.SLIDE_ICON_SIZE) {
-        @Override
-        public void setCommand() {
-
-        }
-        @Override
-        public void initial() {
-            setToolTipText("");
-        }
-    };
-    protected LinkSlide slide6 = new LinkSlide("lk/clearview/main/resources/dashboard.svg", Variable.SLIDE_ICON_SIZE, Variable.SLIDE_ICON_SIZE) {
-        @Override
-        public void setCommand() {
-
-        }
-        @Override
-        public void initial() {
-            setToolTipText("");
-        }
-    };
+//    protected LinkSlide slide5 = new LinkSlide("lk/clearview/main/resources/dashboard.svg", Variable.SLIDE_ICON_SIZE, Variable.SLIDE_ICON_SIZE) {
+//        @Override
+//        public void setCommand() {
+//
+//        }
+//        @Override
+//        public void initial() {
+//            setToolTipText("");
+//        }
+//    };
+//    protected LinkSlide slide6 = new LinkSlide("lk/clearview/main/resources/dashboard.svg", Variable.SLIDE_ICON_SIZE, Variable.SLIDE_ICON_SIZE) {
+//        @Override
+//        public void setCommand() {
+//
+//        }
+//        @Override
+//        public void initial() {
+//            setToolTipText("");
+//        }
+//    };
 
     /**
      * Creates new form Dashboard
@@ -92,6 +105,7 @@ public class Dashboard extends javax.swing.JFrame {
     public Dashboard() {
         initComponents();
         init();
+        DASHBOARD = this;
     }
 
     public void init() {
@@ -104,6 +118,7 @@ public class Dashboard extends javax.swing.JFrame {
         setting_panel.putClientProperty(FlatClientProperties.STYLE, "arc:15");
         loadSide();
         setTheme();
+        setSlide();
     }
 
     private void loadSide() {
@@ -112,31 +127,66 @@ public class Dashboard extends javax.swing.JFrame {
         slider.add(slide2);
         slider.add(slide3);
         slider.add(slide4);
-        slider.add(slide5);
-        slider.add(slide6);
-        slider.add(new LinkSlide("lk/clearview/main/resources/dashboard.svg", 15, 15));
-        slider.add(new LinkSlide("lk/clearview/main/resources/dashboard.svg", 15, 15));
-        slider.add(new LinkSlide("lk/clearview/main/resources/dashboard.svg", 15, 15));
-        slider.add(new LinkSlide("lk/clearview/main/resources/dashboard.svg", 15, 15));
-        slider.add(new LinkSlide("lk/clearview/main/resources/dashboard.svg", 15, 15));
-        slider.add(new LinkSlide("lk/clearview/main/resources/dashboard.svg", 15, 15));
-        slider.add(new LinkSlide("lk/clearview/main/resources/dashboard.svg", 15, 15));
+
+    }
+    
+    private void setSlide() {
+        Variable.LINK_SLIDER_ARRAY[0] = slide1.getjPanel1();
+        Variable.LINK_SLIDER_ARRAY[1] = slide2.getjPanel1();
+        Variable.LINK_SLIDER_ARRAY[2] = slide3.getjPanel1();
+        Variable.LINK_SLIDER_ARRAY[3] = slide4.getjPanel1();
+        Variable.LINK_SLIDER_ARRAY[4] = setting_panel;
+    }
+
+    //load colors panel at click
+    public void chageClickPanel(JPanel panel1) {
+        for (int i = 0; i < 5; i++) {
+            if (Variable.LINK_SLIDER_ARRAY[i] == panel1) {
+                panel1.setBackground(UIManager.getColor("CLICK_COLOR"));
+            } else {
+                LookAndFeel theme = UIManager.getLookAndFeel();
+                if (theme.getClass().getSimpleName().equals("FlatMacDarkLaf")) {
+                    Variable.LINK_SLIDER_ARRAY[i].setBackground(Variable.DARK_BACKGROUND_COLOR);
+                } else {
+                    Variable.LINK_SLIDER_ARRAY[i].setBackground(Variable.LIGHT_BACKGROUND_COLOR);
+                }
+            }
+        }
+        if (panel1 == setting_panel) {
+            setting_panel.setBackground(UIManager.getColor("CLICK_COLOR"));
+        } else {
+            setting_panel.setBackground(UIManager.getColor("CUSTOM_BACKGROUND"));
+        }
     }
 
     private void click() {
 
     }
 
+    private void setDashboard(){
+//        JPanel panel = slide1.getjPanel1();
+//        chageClickPanel(panel);
+    }
+    
     private void setTheme() {
 
         jPanel2.setBackground(UIManager.getColor("CUSTOM_BACKGROUND"));
         setting_panel.setBackground(UIManager.getColor("CUSTOM_BACKGROUND"));
         theme_panel.setBackground(UIManager.getColor("CUSTOM_BACKGROUND"));
         slider.setBackground(UIManager.getColor("CUSTOM_BACKGROUND"));
-
+        
         theme.setIcon(new FlatSVGIcon(UIManager.getString("THEME"), 15, 15));
         logo.setIcon(new FlatSVGIcon(UIManager.getString("LOGO"), 42, 23));
+        
+        setDashboard();
+        
+    }
 
+    public void changeView(JPanel viewPanel) {
+        panelHolder.removeAll();
+        panelHolder.add(viewPanel, BorderLayout.CENTER);
+        SwingUtilities.updateComponentTreeUI(panelHolder);
+        panelHolder.putClientProperty(FlatClientProperties.STYLE, "arc:15");
     }
 
     private void chanageTheme() {
@@ -150,11 +200,12 @@ public class Dashboard extends javax.swing.JFrame {
         }
         SwingUtilities.updateComponentTreeUI(this);
         setTheme();
+        changeView(new ThemePanel());
     }
 
     public void resetLayout() {
-//        repaint();
-//        revalidate();
+        repaint();
+        revalidate();
     }
 
     /**
@@ -176,13 +227,14 @@ public class Dashboard extends javax.swing.JFrame {
         theme_panel = new javax.swing.JPanel();
         theme = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        jSeparator3 = new javax.swing.JSeparator();
         jSeparator4 = new javax.swing.JSeparator();
+        panelHolder = new lk.clearview.main.components.RoundPanelFix();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Clear View");
+        setMinimumSize(new java.awt.Dimension(858, 612));
 
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         jScrollPane1.setPreferredSize(new java.awt.Dimension(59, 112));
@@ -206,6 +258,9 @@ public class Dashboard extends javax.swing.JFrame {
         setting_panel.setMaximumSize(new java.awt.Dimension(50, 50));
         setting_panel.setMinimumSize(new java.awt.Dimension(50, 50));
         setting_panel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                setting_panelMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 setting_panelMouseEntered(evt);
             }
@@ -298,12 +353,7 @@ public class Dashboard extends javax.swing.JFrame {
                                 .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(roundPanel1Layout.createSequentialGroup()
                         .addGap(12, 12, 12)
-                        .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-            .addGroup(roundPanel1Layout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         roundPanel1Layout.setVerticalGroup(
@@ -314,13 +364,13 @@ public class Dashboard extends javax.swing.JFrame {
                 .addGap(32, 32, 32)
                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(6, 6, 6)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 304, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(51, 51, 51)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
+
+        panelHolder.setLayout(new java.awt.BorderLayout());
 
         jMenuBar1.add(jMenu2);
 
@@ -333,13 +383,17 @@ public class Dashboard extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(12, 12, 12)
                 .addComponent(roundPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(785, Short.MAX_VALUE))
+                .addGap(12, 12, 12)
+                .addComponent(panelHolder, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(12, 12, 12))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(12, 12, 12)
-                .addComponent(roundPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(panelHolder, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(roundPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(12, 12, 12))
         );
 
@@ -349,32 +403,37 @@ public class Dashboard extends javax.swing.JFrame {
 
     private void setting_panelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_setting_panelMouseEntered
         // Mouse Enter
-        setting_panel.setBackground(UIManager.getColor("MOUSE_ENTER_BACKGROUND_COLOR"));
-        resetLayout();
+        if (setting_panel.getBackground().equals(Variable.LIGHT_BACKGROUND_COLOR) || setting_panel.getBackground().equals(Variable.DARK_BACKGROUND_COLOR)) {
+            setting_panel.setBackground(UIManager.getColor("MOUSE_ENTER_BACKGROUND_COLOR"));
+        }
     }//GEN-LAST:event_setting_panelMouseEntered
 
     private void setting_panelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_setting_panelMouseExited
         // Mouse Exist
-        setting_panel.setBackground(UIManager.getColor("MOUSE_EXIT_BACKGROUND_COLOR"));
-        resetLayout();
+        if (setting_panel.getBackground().equals(UIManager.getColor("MOUSE_ENTER_BACKGROUND_COLOR"))) {
+            setting_panel.setBackground(UIManager.getColor("MOUSE_EXIT_BACKGROUND_COLOR"));
+        }
     }//GEN-LAST:event_setting_panelMouseExited
 
     private void theme_panelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_theme_panelMouseEntered
         // Mouse Enter
         theme_panel.setBackground(UIManager.getColor("MOUSE_ENTER_BACKGROUND_COLOR"));
-        resetLayout();
     }//GEN-LAST:event_theme_panelMouseEntered
 
     private void theme_panelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_theme_panelMouseExited
         // Mouse Exit
         theme_panel.setBackground(UIManager.getColor("MOUSE_EXIT_BACKGROUND_COLOR"));
-        resetLayout();
     }//GEN-LAST:event_theme_panelMouseExited
 
     private void theme_panelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_theme_panelMouseClicked
         // ChanageTheme
         chanageTheme();
     }//GEN-LAST:event_theme_panelMouseClicked
+
+    private void setting_panelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_setting_panelMouseClicked
+        // TODO add your handling code here:
+        chageClickPanel(setting_panel);
+    }//GEN-LAST:event_setting_panelMouseClicked
 
     public void scrollPaneOptimize(JScrollPane ScrollPane) {
         ScrollPane.setBorder(BorderFactory.createEmptyBorder());
@@ -411,9 +470,9 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JLabel logo;
+    private lk.clearview.main.components.RoundPanelFix panelHolder;
     private lk.clearview.main.components.RoundPanelFix roundPanel1;
     private javax.swing.JLabel setting;
     private javax.swing.JPanel setting_panel;

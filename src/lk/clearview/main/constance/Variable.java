@@ -5,6 +5,8 @@
 package lk.clearview.main.constance;
 
 import java.awt.Color;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 /**
  *
@@ -19,5 +21,7 @@ public interface Variable {
     
 //  Public Variable
     int SLIDE_ICON_SIZE = 15;
+//  Slide Panel Array
+    JPanel[] LINK_SLIDER_ARRAY = new JPanel[6];
     
 }

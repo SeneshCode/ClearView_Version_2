@@ -17,13 +17,28 @@ import lk.clearview.main.constance.Variable;
  *
  * @author USER
  */
-public class LinkSlide extends JPanel {    
+public class LinkSlide extends JPanel {
+
+    /**
+     * @param icon the icon to set
+     */
+    public void setIcon(javax.swing.JLabel icon) {
+        this.icon = icon;
+    }
+
+    /**
+     * @return the jPanel1
+     */
+    public javax.swing.JPanel getjPanel1() {
+        return jPanel1;
+    }
+
     /**
      * Creates new form LinkSlide
      */
-    public LinkSlide(String iconLink,int width,int height){
+    public LinkSlide(String iconLink, int width, int height) {
         initComponents();
-        getIcon().setIcon(new FlatSVGIcon(iconLink , width,height));
+        getIcon().setIcon(new FlatSVGIcon(iconLink, width, height));
         jPanel1.setBackground(UIManager.getColor("MOUSE_EXIT_BACKGROUND_COLOR"));
 //        this.putClientProperty(FlatClientProperties.STYLE, "arc:15");
         jPanel1.putClientProperty(FlatClientProperties.STYLE, "arc:15");
@@ -31,10 +46,11 @@ public class LinkSlide extends JPanel {
         setTheme();
         initial();
     }
-    
-    
-    public void initial(){}
-    private void init(){
+
+    public void initial() {
+    }
+
+    private void init() {
         UIManager.addPropertyChangeListener(new PropertyChangeListener() {
             @Override
             public void propertyChange(PropertyChangeEvent evt) {
@@ -42,20 +58,22 @@ public class LinkSlide extends JPanel {
             }
         });
     }
+
     public void setTheme() {
         LookAndFeel theme = UIManager.getLookAndFeel();
         if (theme.getClass().getSimpleName().equals("FlatMacDarkLaf")) {
             this.setBackground(Variable.DARK_BACKGROUND_COLOR);
-            jPanel1.setBackground(Variable.DARK_BACKGROUND_COLOR);
+            getjPanel1().setBackground(Variable.DARK_BACKGROUND_COLOR);
         } else {
             this.setBackground(Variable.LIGHT_BACKGROUND_COLOR);
-            jPanel1.setBackground(Variable.LIGHT_BACKGROUND_COLOR);
-            
+            getjPanel1().setBackground(Variable.LIGHT_BACKGROUND_COLOR);
+
         }
     }
-     
-    public void setCommand(){}
-    
+
+    public void setCommand() {
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -124,12 +142,16 @@ public class LinkSlide extends JPanel {
 
     private void formMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseEntered
         // Mouse Enter :
-        jPanel1.setBackground(UIManager.getColor("MOUSE_ENTER_BACKGROUND_COLOR"));
+        if (getjPanel1().getBackground().equals(Variable.LIGHT_BACKGROUND_COLOR) || getjPanel1().getBackground().equals(Variable.DARK_BACKGROUND_COLOR)) {
+            getjPanel1().setBackground(UIManager.getColor("MOUSE_ENTER_BACKGROUND_COLOR"));
+        }
     }//GEN-LAST:event_formMouseEntered
 
     private void formMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseExited
         // Mouse Exit
-        jPanel1.setBackground(UIManager.getColor("MOUSE_EXIT_BACKGROUND_COLOR"));
+        if (getjPanel1().getBackground().equals(UIManager.getColor("MOUSE_ENTER_BACKGROUND_COLOR"))) {
+            getjPanel1().setBackground(UIManager.getColor("MOUSE_EXIT_BACKGROUND_COLOR"));
+        }
     }//GEN-LAST:event_formMouseExited
 
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
