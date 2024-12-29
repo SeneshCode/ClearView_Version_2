@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package lk.clearview.main.components;
 
 import com.formdev.flatlaf.FlatClientProperties;
@@ -17,12 +13,13 @@ import lk.clearview.main.constance.Variable;
  *
  * @author USER
  */
-public class BgPanel extends JPanel {
+public class RoundDefaultPanel extends JPanel {
     
 //    public static Color LIGHT_BACKGROUND_COLOR = new Color(240, 242, 255);
     
-    public BgPanel(){
+    public RoundDefaultPanel(){
         init();
+        this.putClientProperty(FlatClientProperties.STYLE, "arc:15");
     }
 //        this.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 
@@ -38,9 +35,9 @@ public class BgPanel extends JPanel {
     public void setTheme() {
         LookAndFeel theme = UIManager.getLookAndFeel();
         if (theme.getClass().getSimpleName().equals("FlatMacDarkLaf")) {
-            this.setBackground(Variable.DARK_BACKGROUND_COLOR);
+            this.setBackground(Variable.DARK_DEFAULT_PANEL_BACKGROUND_COLOR);
         } else {
-            this.setBackground(Variable.LIGHT_BACKGROUND_COLOR);
+            this.setBackground(Variable.LIGHT_DEFAULT_PANEL_BACKGROUND_COLOR);
         }
     }
     

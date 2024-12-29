@@ -18,6 +18,9 @@ public interface Variable {
     Color DARK_BACKGROUND_COLOR = new Color(38,38,41);
 //    Color DARK_BACKGROUND_COLOR = new Color(38,38,41);
     
+//    Default Color of default custom panel
+    Color LIGHT_DEFAULT_PANEL_BACKGROUND_COLOR = new Color(235,236,236);
+    Color DARK_DEFAULT_PANEL_BACKGROUND_COLOR = new Color(42,42,48);
     
 //  Public Variable
     int SLIDE_ICON_SIZE = 15;

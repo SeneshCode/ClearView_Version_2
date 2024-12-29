@@ -5,22 +5,25 @@
 package lk.clearview.part.senesh.panel;
 
 import javax.swing.JOptionPane;
-import lk.clearview.dialog.doctor.AddPrescription;
-import lk.clearview.dialog.doctor.PatientPrescription;
-import lk.clearview.dialog.doctor.UpdatePrescriptin;
+import javax.swing.UIManager;
+import lk.clearview.part.senesh.dialog.AddPrescription;
+import lk.clearview.part.senesh.dialog.PatientPrescription;
+import lk.clearview.part.senesh.dialog.UpdatePrescriptin;
 import lk.clearview.main.Dashboard;
+import lk.clearview.main.components.RoundPanelFix;
 
 /**
  *
  * @author USER
  */
-public class ManagePrescription extends javax.swing.JPanel {
+public class ManagePrescription extends RoundPanelFix {
 
     /**
      * Creates new form ManagePatient
      */
     public ManagePrescription() {
         initComponents();
+        jPanel1.setBackground(UIManager.getColor("BACKGROUND"));
     }
 
     /**

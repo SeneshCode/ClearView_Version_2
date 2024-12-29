@@ -5,20 +5,23 @@
 package lk.clearview.part.senesh.panel;
 
 import javax.swing.JOptionPane;
-import lk.clearview.dialog.doctor.ScheduleDateTime;
+import javax.swing.UIManager;
+import lk.clearview.part.senesh.dialog.ScheduleDateTime;
 import lk.clearview.main.Dashboard;
+import lk.clearview.main.components.RoundPanelFix;
 
 /**
  *
  * @author USER
  */
-public class Schedule extends javax.swing.JPanel {
+public class Schedule extends RoundPanelFix {
 
     /**
      * Creates new form ManagePatient
      */
     public Schedule() {
         initComponents();
+        jPanel1.setBackground(UIManager.getColor("BACKGROUND"));
     }
 
     /**

@@ -26,8 +26,12 @@ import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import lk.clearview.main.components.LinkSlide;
 import lk.clearview.main.constance.Variable;
+import lk.clearview.main.panel.DashboardPanel;
 import lk.clearview.main.panel.ThemePanel;
 import lk.clearview.part.senesh.panel.ManagePatient;
+import lk.clearview.part.senesh.panel.ManagePrescription;
+import lk.clearview.part.senesh.panel.ProfileSettings;
+import lk.clearview.part.senesh.panel.Schedule;
 
 /**
  *
@@ -40,8 +44,8 @@ public class Dashboard extends javax.swing.JFrame {
     protected LinkSlide slide1 = new LinkSlide(UIManager.getString("DASHBOARD"), Variable.SLIDE_ICON_SIZE, Variable.SLIDE_ICON_SIZE) {
         @Override
         public void setCommand() {
-            setDashboard();
-            chageClickPanel(getjPanel1());
+            changeClickPanel(getjPanel1());
+            changeView(new DashboardPanel());
         }
 
         @Override
@@ -52,7 +56,7 @@ public class Dashboard extends javax.swing.JFrame {
     protected LinkSlide slide2 = new LinkSlide(UIManager.getString("LIST"), Variable.SLIDE_ICON_SIZE, Variable.SLIDE_ICON_SIZE) {
         @Override
         public void setCommand() {
-            chageClickPanel(getjPanel1());
+            changeClickPanel(getjPanel1());
             changeView(new ManagePatient());
         }
 
@@ -64,18 +68,24 @@ public class Dashboard extends javax.swing.JFrame {
     protected LinkSlide slide3 = new LinkSlide(UIManager.getString("EDIT"), Variable.SLIDE_ICON_SIZE, Variable.SLIDE_ICON_SIZE) {
         @Override
         public void setCommand() {
-            chageClickPanel(getjPanel1());
+            changeClickPanel(getjPanel1());
+            changeView(new ManagePrescription());
+        }
+        @Override
+        public void initial(){
+            setToolTipText("Manage Prescription");
         }
     };
     protected LinkSlide slide4 = new LinkSlide(UIManager.getString("CALANDER"), Variable.SLIDE_ICON_SIZE, Variable.SLIDE_ICON_SIZE) {
         @Override
         public void setCommand() {
-            chageClickPanel(getjPanel1());
+            changeClickPanel(getjPanel1());
+            changeView(new Schedule());
         }
 
         @Override
         public void initial() {
-            setToolTipText("");
+            setToolTipText("Schedule Appointment");
         }
     };
 //    protected LinkSlide slide5 = new LinkSlide("lk/clearview/main/resources/dashboard.svg", Variable.SLIDE_ICON_SIZE, Variable.SLIDE_ICON_SIZE) {
@@ -106,6 +116,8 @@ public class Dashboard extends javax.swing.JFrame {
         initComponents();
         init();
         DASHBOARD = this;
+        changeView(new DashboardPanel());
+        changeClickPanel(slide1.getjPanel1());
     }
 
     public void init() {
@@ -139,7 +151,7 @@ public class Dashboard extends javax.swing.JFrame {
     }
 
     //load colors panel at click
-    public void chageClickPanel(JPanel panel1) {
+    public void changeClickPanel(JPanel panel1) {
         for (int i = 0; i < 5; i++) {
             if (Variable.LINK_SLIDER_ARRAY[i] == panel1) {
                 panel1.setBackground(UIManager.getColor("CLICK_COLOR"));
@@ -165,7 +177,7 @@ public class Dashboard extends javax.swing.JFrame {
 
     private void setDashboard(){
 //        JPanel panel = slide1.getjPanel1();
-//        chageClickPanel(panel);
+//        changeClickPanel(panel);
     }
     
     private void setTheme() {
@@ -189,7 +201,7 @@ public class Dashboard extends javax.swing.JFrame {
         panelHolder.putClientProperty(FlatClientProperties.STYLE, "arc:15");
     }
 
-    private void chanageTheme() {
+    public void changeTheme() {
         LookAndFeel getTheme = UIManager.getLookAndFeel();
         if (getTheme.getClass().getSimpleName().equals("FlatMacDarkLaf")) {
             FlatLafRegisterCustomDefaultsSource();
@@ -254,6 +266,7 @@ public class Dashboard extends javax.swing.JFrame {
 
         logo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
+        setting_panel.setToolTipText("Settings");
         setting_panel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         setting_panel.setMaximumSize(new java.awt.Dimension(50, 50));
         setting_panel.setMinimumSize(new java.awt.Dimension(50, 50));
@@ -284,6 +297,7 @@ public class Dashboard extends javax.swing.JFrame {
             .addComponent(setting, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
+        theme_panel.setToolTipText("Change Theme");
         theme_panel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         theme_panel.setMaximumSize(new java.awt.Dimension(50, 50));
         theme_panel.setMinimumSize(new java.awt.Dimension(50, 50));
@@ -364,8 +378,8 @@ public class Dashboard extends javax.swing.JFrame {
                 .addGap(32, 32, 32)
                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(6, 6, 6)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 304, Short.MAX_VALUE)
-                .addGap(51, 51, 51)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 327, Short.MAX_VALUE)
+                .addGap(28, 28, 28)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -427,12 +441,13 @@ public class Dashboard extends javax.swing.JFrame {
 
     private void theme_panelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_theme_panelMouseClicked
         // ChanageTheme
-        chanageTheme();
+        changeTheme();
     }//GEN-LAST:event_theme_panelMouseClicked
 
     private void setting_panelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_setting_panelMouseClicked
         // TODO add your handling code here:
-        chageClickPanel(setting_panel);
+        changeClickPanel(setting_panel);
+        changeView(new ProfileSettings());
     }//GEN-LAST:event_setting_panelMouseClicked
 
     public void scrollPaneOptimize(JScrollPane ScrollPane) {

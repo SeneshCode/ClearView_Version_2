@@ -7,7 +7,7 @@ package lk.clearview.part.senesh.panel;
 import com.formdev.flatlaf.FlatClientProperties;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
-import lk.clearview.dialog.doctor.PatientPrescription;
+import lk.clearview.part.senesh.dialog.PatientPrescription;
 import lk.clearview.main.Dashboard;
 import lk.clearview.main.components.RoundPanelFix;
 /**
@@ -94,6 +94,7 @@ public class ManagePatient extends RoundPanelFix {
                 return canEdit [columnIndex];
             }
         });
+        jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTable1MouseClicked(evt);

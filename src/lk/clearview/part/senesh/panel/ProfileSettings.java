@@ -6,13 +6,15 @@ package lk.clearview.part.senesh.panel;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 import lk.clearview.main.Dashboard;
+import lk.clearview.main.components.RoundPanelFix;
 
 /**
  *
  * @author USER
  */
-public class ProfileSettings extends javax.swing.JPanel {
+public class ProfileSettings extends RoundPanelFix {
 
     /**
      * Creates new form ManagePatient
@@ -20,6 +22,9 @@ public class ProfileSettings extends javax.swing.JPanel {
 
     public ProfileSettings() {
         initComponents();
+        jPanel1.setBackground(UIManager.getColor("BACKGROUND"));
+        jPanel2.setBackground(UIManager.getColor("BACKGROUND"));
+        jTabbedPane1.setBackground(UIManager.getColor("BACKGROUND"));
     }
 
     /**
@@ -63,8 +68,8 @@ public class ProfileSettings extends javax.swing.JPanel {
         jSeparator3 = new javax.swing.JSeparator();
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lk/clearview/resources/doctor/profile.png"))); // NOI18N
-        jLabel1.setText("Profile Settings");
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lk/clearview/part/senesh/resources/settings.png"))); // NOI18N
+        jLabel1.setText("Settings");
 
         jLabel2.setText("First Name");
 
@@ -82,6 +87,7 @@ public class ProfileSettings extends javax.swing.JPanel {
 
         jButton1.setBackground(new java.awt.Color(3, 96, 255));
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Show");
 
         jLabel4.setText("NIC");
@@ -110,6 +116,7 @@ public class ProfileSettings extends javax.swing.JPanel {
 
         jButton4.setBackground(new java.awt.Color(3, 96, 255));
         jButton4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton4.setForeground(new java.awt.Color(255, 255, 255));
         jButton4.setText("Update Profile");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -173,9 +180,9 @@ public class ProfileSettings extends javax.swing.JPanel {
                                 .addGap(0, 0, Short.MAX_VALUE)))
                         .addContainerGap())))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(198, Short.MAX_VALUE)
+                .addContainerGap(201, Short.MAX_VALUE)
                 .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 241, Short.MAX_VALUE))
+                .addGap(0, 244, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -221,10 +228,12 @@ public class ProfileSettings extends javax.swing.JPanel {
 
         jButton2.setBackground(new java.awt.Color(22, 163, 74));
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Reset Password");
 
         jButton3.setBackground(new java.awt.Color(3, 96, 255));
         jButton3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setText("Change Theme");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -236,6 +245,7 @@ public class ProfileSettings extends javax.swing.JPanel {
 
         jButton5.setBackground(new java.awt.Color(255, 67, 67));
         jButton5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton5.setForeground(new java.awt.Color(255, 255, 255));
         jButton5.setText("Delete Account");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -260,9 +270,9 @@ public class ProfileSettings extends javax.swing.JPanel {
                                 .addComponent(jLabel7)
                                 .addGap(32, 32, 32))
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addContainerGap(246, Short.MAX_VALUE)
+                                .addContainerGap(251, Short.MAX_VALUE)
                                 .addComponent(jLabel12)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 118, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 123, Short.MAX_VALUE)
                         .addComponent(jButton2))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
@@ -314,12 +324,12 @@ public class ProfileSettings extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(406, 406, 406))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(jTabbedPane1)
-                        .addGap(12, 12, 12))))
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE)
+                        .addGap(406, 406, 406))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -358,6 +368,7 @@ public class ProfileSettings extends javax.swing.JPanel {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        Dashboard.DASHBOARD.changeTheme();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
