@@ -4,6 +4,9 @@
  */
 package lk.clearview.part.senesh.panel;
 
+import java.awt.Image;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
@@ -25,6 +28,14 @@ public class ProfileSettings extends RoundPanelFix {
         jPanel1.setBackground(UIManager.getColor("BACKGROUND"));
         jPanel2.setBackground(UIManager.getColor("BACKGROUND"));
         jTabbedPane1.setBackground(UIManager.getColor("BACKGROUND"));
+        setIcons();
+    }
+    
+    private void setIcons(){
+         Icon profileIcon = new ImageIcon(getClass().getResource("../resources/profile.png"));
+        Icon settingsIcon = new ImageIcon(getClass().getResource("../resources/icons8-settings-22.png"));
+        jTabbedPane1.setIconAt(0, profileIcon );
+        jTabbedPane1.setIconAt(1, settingsIcon );
     }
 
     /**
@@ -68,8 +79,11 @@ public class ProfileSettings extends RoundPanelFix {
         jSeparator3 = new javax.swing.JSeparator();
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lk/clearview/part/senesh/resources/settings.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lk/clearview/part/senesh/resources/icons8-settings-25.png"))); // NOI18N
         jLabel1.setText("Settings");
+
+        jTabbedPane1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jTabbedPane1.setName(""); // NOI18N
 
         jLabel2.setText("First Name");
 
@@ -85,7 +99,7 @@ public class ProfileSettings extends RoundPanelFix {
 
         jTextField4.setToolTipText("Search Patient using patient name");
 
-        jButton1.setBackground(new java.awt.Color(3, 96, 255));
+        jButton1.setBackground(new java.awt.Color(0, 113, 242));
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Show");
@@ -114,7 +128,7 @@ public class ProfileSettings extends RoundPanelFix {
 
         jLabel9.setText("User Type");
 
-        jButton4.setBackground(new java.awt.Color(3, 96, 255));
+        jButton4.setBackground(new java.awt.Color(0, 113, 242));
         jButton4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton4.setForeground(new java.awt.Color(255, 255, 255));
         jButton4.setText("Update Profile");
@@ -187,7 +201,7 @@ public class ProfileSettings extends RoundPanelFix {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(20, 20, 20)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -231,7 +245,7 @@ public class ProfileSettings extends RoundPanelFix {
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Reset Password");
 
-        jButton3.setBackground(new java.awt.Color(3, 96, 255));
+        jButton3.setBackground(new java.awt.Color(0, 113, 242));
         jButton3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setText("Change Theme");
@@ -293,7 +307,7 @@ public class ProfileSettings extends RoundPanelFix {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
+                .addGap(20, 20, 20)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
                     .addComponent(jLabel7))
@@ -311,7 +325,7 @@ public class ProfileSettings extends RoundPanelFix {
                     .addComponent(jLabel11))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 265, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 264, Short.MAX_VALUE)
                 .addComponent(jLabel12))
         );
 
@@ -328,7 +342,7 @@ public class ProfileSettings extends RoundPanelFix {
                         .addComponent(jTabbedPane1)
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(406, 406, 406))))
         );
         layout.setVerticalGroup(

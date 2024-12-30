@@ -4,6 +4,8 @@
  */
 package lk.clearview.part.senesh.dialog;
 
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author USER
@@ -16,6 +18,7 @@ public class PatientPrescription extends javax.swing.JDialog {
     public PatientPrescription(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        this.setIconImage(new ImageIcon(getClass().getResource("../../../main/resources/lightlogo.png")).getImage());
     }
 
     /**

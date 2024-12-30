@@ -25,6 +25,6 @@ public interface Variable {
 //  Public Variable
     int SLIDE_ICON_SIZE = 15;
 //  Slide Panel Array
-    JPanel[] LINK_SLIDER_ARRAY = new JPanel[6];
+    JPanel[] LINK_SLIDER_ARRAY = new JPanel[9];
     
 }

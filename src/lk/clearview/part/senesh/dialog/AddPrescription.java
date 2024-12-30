@@ -22,8 +22,7 @@ public class AddPrescription extends javax.swing.JDialog {
     public AddPrescription(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        
-        this.setIconImage(new ImageIcon(getClass().getResource("../../resources/eye-35.png")).getImage());
+        this.setIconImage(new ImageIcon(getClass().getResource("../../../main/resources/lightlogo.png")).getImage());
     }
     
     /**
@@ -65,8 +64,9 @@ public class AddPrescription extends javax.swing.JDialog {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Schedule Time and Date");
 
-        jButton1.setBackground(new java.awt.Color(3, 96, 255));
+        jButton1.setBackground(new java.awt.Color(0, 113, 242));
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Send Prescription");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

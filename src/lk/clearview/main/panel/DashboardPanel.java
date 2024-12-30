@@ -27,7 +27,6 @@ public class DashboardPanel extends RoundPanelFix {
     public DashboardPanel() {
         initComponents();
 //        jPanel1.setBackground(UIManager.getColor("BACKGROUND"));
-        jScrollPane1.setBackground(UIManager.getColor("BACKGROUND"));
 //        jLabel1.setIcon(new FlatSVGIcon(UIManager.getString("DASHBOARD"), Variable.SLIDE_ICON_SIZE, Variable.SLIDE_ICON_SIZE));
     }
 

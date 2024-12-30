@@ -148,7 +148,7 @@ public class ManagePrescription extends RoundPanelFix {
         );
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lk/clearview/resources/doctor/appointment.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lk/clearview/part/senesh/resources/appointment.png"))); // NOI18N
         jLabel1.setText("Manage Patient Prescription");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

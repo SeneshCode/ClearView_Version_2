@@ -28,6 +28,9 @@ import lk.clearview.main.components.LinkSlide;
 import lk.clearview.main.constance.Variable;
 import lk.clearview.main.panel.DashboardPanel;
 import lk.clearview.main.panel.ThemePanel;
+import lk.clearview.part.dhanushka.panel.ManageAppointments;
+import lk.clearview.part.isira.panel.ManageActivities;
+import lk.clearview.part.isira.panel.ManageStaff;
 import lk.clearview.part.senesh.panel.ManagePatient;
 import lk.clearview.part.senesh.panel.ManagePrescription;
 import lk.clearview.part.senesh.panel.ProfileSettings;
@@ -38,9 +41,9 @@ import lk.clearview.part.senesh.panel.Schedule;
  * @author USER
  */
 public class Dashboard extends javax.swing.JFrame {
-    
+
     public static Dashboard DASHBOARD;
-    
+
     protected LinkSlide slide1 = new LinkSlide(UIManager.getString("DASHBOARD"), Variable.SLIDE_ICON_SIZE, Variable.SLIDE_ICON_SIZE) {
         @Override
         public void setCommand() {
@@ -71,8 +74,9 @@ public class Dashboard extends javax.swing.JFrame {
             changeClickPanel(getjPanel1());
             changeView(new ManagePrescription());
         }
+
         @Override
-        public void initial(){
+        public void initial() {
             setToolTipText("Manage Prescription");
         }
     };
@@ -88,26 +92,54 @@ public class Dashboard extends javax.swing.JFrame {
             setToolTipText("Schedule Appointment");
         }
     };
-//    protected LinkSlide slide5 = new LinkSlide("lk/clearview/main/resources/dashboard.svg", Variable.SLIDE_ICON_SIZE, Variable.SLIDE_ICON_SIZE) {
-//        @Override
-//        public void setCommand() {
-//
-//        }
-//        @Override
-//        public void initial() {
-//            setToolTipText("");
-//        }
-//    };
-//    protected LinkSlide slide6 = new LinkSlide("lk/clearview/main/resources/dashboard.svg", Variable.SLIDE_ICON_SIZE, Variable.SLIDE_ICON_SIZE) {
-//        @Override
-//        public void setCommand() {
-//
-//        }
-//        @Override
-//        public void initial() {
-//            setToolTipText("");
-//        }
-//    };
+    protected LinkSlide slide5 = new LinkSlide("lk/clearview/main/resources/dashboard.svg", Variable.SLIDE_ICON_SIZE, Variable.SLIDE_ICON_SIZE) {
+        @Override
+        public void setCommand() {
+            changeClickPanel(getjPanel1());
+            changeView(new ManageActivities());
+        }
+
+        @Override
+        public void initial() {
+            setToolTipText("Manage Activities");
+        }
+    };
+    protected LinkSlide slide6 = new LinkSlide("lk/clearview/main/resources/dashboard.svg", Variable.SLIDE_ICON_SIZE, Variable.SLIDE_ICON_SIZE) {
+        @Override
+        public void setCommand() {
+            changeClickPanel(getjPanel1());
+            changeView(new ManageStaff());
+        }
+
+        @Override
+        public void initial() {
+            setToolTipText("Manage Staff");
+        }
+    };
+    protected LinkSlide slide7 = new LinkSlide("lk/clearview/main/resources/dashboard.svg", Variable.SLIDE_ICON_SIZE, Variable.SLIDE_ICON_SIZE) {
+        @Override
+        public void setCommand() {
+            changeClickPanel(getjPanel1());
+            changeView(new lk.clearview.part.dhanushka.panel.ManagePatient());
+        }
+
+        @Override
+        public void initial() {
+            setToolTipText("Manage Patient");
+        }
+    };
+    protected LinkSlide slide8 = new LinkSlide("lk/clearview/main/resources/dashboard.svg", Variable.SLIDE_ICON_SIZE, Variable.SLIDE_ICON_SIZE) {
+        @Override
+        public void setCommand() {
+            changeClickPanel(getjPanel1());
+            changeView(new ManageAppointments());
+        }
+
+        @Override
+        public void initial() {
+            setToolTipText("Manage Appointments");
+        }
+    };
 
     /**
      * Creates new form Dashboard
@@ -139,20 +171,36 @@ public class Dashboard extends javax.swing.JFrame {
         slider.add(slide2);
         slider.add(slide3);
         slider.add(slide4);
+        slider.add(slide5);
+        slider.add(slide6);
+        slider.add(slide7);
+        slider.add(slide8);
 
     }
-    
+
     private void setSlide() {
         Variable.LINK_SLIDER_ARRAY[0] = slide1.getjPanel1();
         Variable.LINK_SLIDER_ARRAY[1] = slide2.getjPanel1();
         Variable.LINK_SLIDER_ARRAY[2] = slide3.getjPanel1();
         Variable.LINK_SLIDER_ARRAY[3] = slide4.getjPanel1();
         Variable.LINK_SLIDER_ARRAY[4] = setting_panel;
+        Variable.LINK_SLIDER_ARRAY[5] = slide5.getjPanel1();
+        Variable.LINK_SLIDER_ARRAY[6] = slide6.getjPanel1();
+        Variable.LINK_SLIDER_ARRAY[7] = slide7.getjPanel1();
+        Variable.LINK_SLIDER_ARRAY[8] = slide8.getjPanel1();
+    }
+
+    public void setPanelColor(JPanel... panels) {
+        for (JPanel panel1 : panels) {
+            panel1.setBackground(UIManager.getColor("CUSTOM_BACKGROUND"));
+            System.out.println(UIManager.getColor("CUSTOM_BACKGROUND"));
+            System.out.println(panel1.getBackground());              
+        }
     }
 
     //load colors panel at click
     public void changeClickPanel(JPanel panel1) {
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < Variable.LINK_SLIDER_ARRAY.length; i++) {
             if (Variable.LINK_SLIDER_ARRAY[i] == panel1) {
                 panel1.setBackground(UIManager.getColor("CLICK_COLOR"));
             } else {
@@ -175,28 +223,28 @@ public class Dashboard extends javax.swing.JFrame {
 
     }
 
-    private void setDashboard(){
+    private void setDashboard() {
 //        JPanel panel = slide1.getjPanel1();
 //        changeClickPanel(panel);
     }
-    
+
     private void setTheme() {
 
         jPanel2.setBackground(UIManager.getColor("CUSTOM_BACKGROUND"));
         setting_panel.setBackground(UIManager.getColor("CUSTOM_BACKGROUND"));
         theme_panel.setBackground(UIManager.getColor("CUSTOM_BACKGROUND"));
         slider.setBackground(UIManager.getColor("CUSTOM_BACKGROUND"));
-        
+
         theme.setIcon(new FlatSVGIcon(UIManager.getString("THEME"), 15, 15));
         logo.setIcon(new FlatSVGIcon(UIManager.getString("LOGO"), 42, 23));
-        
+
         setDashboard();
-        
+
     }
 
     public void changeView(JPanel viewPanel) {
         panelHolder.removeAll();
-        panelHolder.add(viewPanel,BorderLayout.CENTER);
+        panelHolder.add(viewPanel, BorderLayout.CENTER);
         SwingUtilities.updateComponentTreeUI(panelHolder);
         panelHolder.putClientProperty(FlatClientProperties.STYLE, "arc:15");
     }

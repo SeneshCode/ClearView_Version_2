@@ -9,6 +9,7 @@ import javax.swing.UIManager;
 
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import raven.datetime.component.time.TimePicker;
 
 /**
  *
@@ -16,6 +17,8 @@ import javax.swing.JOptionPane;
  */
 public class ScheduleDateTime extends javax.swing.JDialog {
 
+    private TimePicker timePicker1 = new TimePicker();
+    private TimePicker timePicker2 = new TimePicker();
     /**
      * Creates new form ScheduleDateTime
      */
@@ -23,7 +26,7 @@ public class ScheduleDateTime extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         setTimePicker();
-        this.setIconImage(new ImageIcon(getClass().getResource("../../resources/eye-35.png")).getImage());
+        this.setIconImage(new ImageIcon(getClass().getResource("../../../main/resources/lightlogo.png")).getImage());
     }
 
     private void setTimePicker(){
@@ -40,8 +43,6 @@ public class ScheduleDateTime extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        timePicker1 = new raven.datetime.component.time.TimePicker();
-        timePicker2 = new raven.datetime.component.time.TimePicker();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         monday_start_time = new javax.swing.JFormattedTextField();
@@ -67,7 +68,6 @@ public class ScheduleDateTime extends javax.swing.JDialog {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Schedule Time and Date");
 
-        jButton1.setBackground(new java.awt.Color(3, 96, 255));
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton1.setText("Save Schedule");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -76,13 +76,13 @@ public class ScheduleDateTime extends javax.swing.JDialog {
             }
         });
 
-        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lk/clearview/resources/doctor/date.png"))); // NOI18N
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lk/clearview/part/senesh/resources/date.png"))); // NOI18N
         jLabel11.setText("Wednesday");
 
-        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lk/clearview/resources/doctor/date.png"))); // NOI18N
+        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lk/clearview/part/senesh/resources/date.png"))); // NOI18N
         jLabel14.setText("Thursday");
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lk/clearview/resources/doctor/date.png"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lk/clearview/part/senesh/resources/date.png"))); // NOI18N
         jLabel3.setText("Monday");
 
         jCheckBox4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -99,7 +99,7 @@ public class ScheduleDateTime extends javax.swing.JDialog {
             }
         });
 
-        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lk/clearview/resources/doctor/date.png"))); // NOI18N
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lk/clearview/part/senesh/resources/date.png"))); // NOI18N
         jLabel15.setText("Friday");
 
         jCheckBox5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -109,7 +109,7 @@ public class ScheduleDateTime extends javax.swing.JDialog {
             }
         });
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lk/clearview/resources/doctor/date.png"))); // NOI18N
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lk/clearview/part/senesh/resources/date.png"))); // NOI18N
         jLabel6.setText("Tuesday");
 
         jCheckBox2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -296,7 +296,5 @@ public class ScheduleDateTime extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JFormattedTextField monday_end_time;
     private javax.swing.JFormattedTextField monday_start_time;
-    private raven.datetime.component.time.TimePicker timePicker1;
-    private raven.datetime.component.time.TimePicker timePicker2;
     // End of variables declaration//GEN-END:variables
 }

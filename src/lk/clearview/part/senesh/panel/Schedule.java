@@ -157,7 +157,7 @@ public class Schedule extends RoundPanelFix {
         );
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lk/clearview/resources/doctor/schedule2.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lk/clearview/part/senesh/resources/schedule2.png"))); // NOI18N
         jLabel1.setText("Create A Schedule for Appointment");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
