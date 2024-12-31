@@ -5,6 +5,7 @@
 package lk.clearview.part.dhanushka.panel;
 
 import lk.clearview.main.Dashboard;
+import lk.clearview.main.components.RoundPanelFix;
 import lk.clearview.part.dhanushka.dialog.Patient;
 import lk.clearview.part.dhanushka.dialog.RegisterNewPatient;
 import lk.clearview.part.dhanushka.dialog.UpdateNewPatient;
@@ -13,14 +14,13 @@ import lk.clearview.part.dhanushka.dialog.UpdateNewPatient;
  *
  * @author nirma
  */
-public class ManagePatient extends javax.swing.JPanel {
+public class ManagePatient extends RoundPanelFix {
 
     /**
      * Creates new form ManagePatient
      */
     public ManagePatient() {
         initComponents();
-        Dashboard.DASHBOARD.setPanelColor(this,jPanel1,jPanel4,jPanel5);
     }
 
     /**
@@ -44,6 +44,8 @@ public class ManagePatient extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
 
+        jPanel4.setOpaque(false);
+
         jLabel1.setFont(new java.awt.Font("Poppins ExtraBold", 1, 24)); // NOI18N
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lk/clearview/part/dhanushka/resources/patient-22.png"))); // NOI18N
         jLabel1.setText("Manage Patient");
@@ -63,6 +65,8 @@ public class ManagePatient extends javax.swing.JPanel {
                 .addContainerGap(20, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
+
+        jPanel5.setOpaque(false);
 
         jComboBox1.setBackground(new java.awt.Color(3, 96, 255));
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Patient Order", "Name ASC", "Name  DESC", "Date of Birth ASC", "Date of Birth  DESC", "Register Date ASC", "Register Date DESC" }));

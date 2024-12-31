@@ -5,6 +5,7 @@
 package lk.clearview.part.isira.panel;
 
 import lk.clearview.main.Dashboard;
+import lk.clearview.main.components.RoundPanelFix;
 import lk.clearview.part.isira.dialog.Register;
 import lk.clearview.part.isira.dialog.Update;
 
@@ -12,7 +13,7 @@ import lk.clearview.part.isira.dialog.Update;
  *
  * @author acer
  */
-public class ManageStaff extends javax.swing.JPanel {
+public class ManageStaff extends RoundPanelFix {
 
     /**
      * Creates new form ManageStaff
@@ -40,11 +41,14 @@ public class ManageStaff extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
 
+        setOpaque(false);
         setPreferredSize(new java.awt.Dimension(750, 475));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lk/clearview/part/isira/resources/staff-22.png"))); // NOI18N
         jLabel1.setText("Manage Staff​");
+
+        jPanel1.setOpaque(false);
 
         jComboBox1.setBackground(new java.awt.Color(3, 96, 255));
         jComboBox1.setForeground(new java.awt.Color(255, 255, 255));

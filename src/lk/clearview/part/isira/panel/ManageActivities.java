@@ -21,10 +21,6 @@ public class ManageActivities extends RoundPanelFix{
     public ManageActivities() {
         initComponents();
 //         Dashboard.DASHBOARD.setPanelColor(jPanel1,jPanel2);
-        Color bg = UIManager.getColor("CUSTOM_BACKGROUND");
-        System.out.println(bg);
-        jPanel1.setBackground(bg);
-        jPanel2.setBackground(UIManager.getColor("CUSTOM_BACKGROUND"));
 //        System.out.println(UIManager.getColor("CUSTOM_BACKGROUND"));
 //        System.out.println(new Color(255,255,255));
     }
@@ -58,6 +54,8 @@ public class ManageActivities extends RoundPanelFix{
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lk/clearview/part/isira/resources/lawyer-22.png"))); // NOI18N
         jLabel1.setText("Manage activities");
+
+        jPanel1.setOpaque(false);
 
         jLabel2.setText("Activity Status");
 
@@ -141,6 +139,8 @@ public class ManageActivities extends RoundPanelFix{
                     .addComponent(jButton2))
                 .addGap(4, 4, 4))
         );
+
+        jPanel2.setOpaque(false);
 
         jTable1.setForeground(new java.awt.Color(255, 255, 255));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(

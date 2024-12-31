@@ -1,6 +1,7 @@
 package lk.clearview.part.dhanushka.panel;
 
 import lk.clearview.main.Dashboard;
+import lk.clearview.main.components.RoundPanelFix;
 import lk.clearview.part.dhanushka.dialog.AddNewAppoinments;
 import lk.clearview.part.dhanushka.dialog.UpdateAppoinment;
 
@@ -8,14 +9,13 @@ import lk.clearview.part.dhanushka.dialog.UpdateAppoinment;
  *
  * @author nirma
  */
-public class ManageAppointments extends javax.swing.JPanel {
+public class ManageAppointments extends RoundPanelFix {
 
     /**
      * Creates new form ManageAppointments
      */
     public ManageAppointments() {
         initComponents();
-        Dashboard.DASHBOARD.setPanelColor(this,jPanel4,jPanel5,jPanel6);
     }
 
     /**
@@ -39,6 +39,10 @@ public class ManageAppointments extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
 
+        setOpaque(false);
+
+        jPanel4.setOpaque(false);
+
         jLabel1.setFont(new java.awt.Font("Poppins ExtraBold", 1, 24)); // NOI18N
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lk/clearview/part/dhanushka/resources/Appointment-22.png"))); // NOI18N
         jLabel1.setText("Manage Appoinments");
@@ -58,6 +62,8 @@ public class ManageAppointments extends javax.swing.JPanel {
                 .addContainerGap(20, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
+
+        jPanel5.setOpaque(false);
 
         jComboBox1.setBackground(new java.awt.Color(3, 96, 255));
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Appointment Order", "Patient Name ASC", "Patient Name DESC", "Doctor Name ASC", "Doctor Name DESC", "Date of Birth ASC", "Date of Birth DESC", "Register Date ASC", "Register Date DESC" }));
@@ -92,6 +98,8 @@ public class ManageAppointments extends javax.swing.JPanel {
                 jButton3ActionPerformed(evt);
             }
         });
+
+        jPanel6.setOpaque(false);
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

@@ -4,6 +4,7 @@
  */
 package lk.clearview.part.sheran.panel;
 
+import lk.clearview.main.components.RoundPanelFix;
 import lk.clearview.part.sheran.gui.FrameAndLensPrescriptionDetails;
 import lk.clearview.part.sheran.gui.OrderProductFullDetails;
 
@@ -11,7 +12,7 @@ import lk.clearview.part.sheran.gui.OrderProductFullDetails;
  *
  * @author shera
  */
-public class ManageOrderProductHistory extends javax.swing.JPanel {
+public class ManageOrderProductHistory extends RoundPanelFix {
 
     /**
      * Creates new form ManageOrderProductHistory
@@ -43,9 +44,13 @@ public class ManageOrderProductHistory extends javax.swing.JPanel {
         jButton3 = new javax.swing.JButton();
         jTextField5 = new javax.swing.JTextField();
 
+        jPanel5.setOpaque(false);
+
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lk/clearview/resources/technician/icons8-order-history-22.png"))); // NOI18N
         jLabel3.setText("Manage Order Product History");
+
+        jPanel2.setOpaque(false);
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pending", "In Progress", "Completed", "Successfully Delivery" }));
 
@@ -56,6 +61,8 @@ public class ManageOrderProductHistory extends javax.swing.JPanel {
         jButton1.setBackground(new java.awt.Color(225, 172, 0));
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton1.setText("Clear Search");
+
+        jPanel3.setOpaque(false);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

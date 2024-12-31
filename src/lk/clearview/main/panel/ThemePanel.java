@@ -4,23 +4,29 @@
  */
 package lk.clearview.main.panel;
 
+import com.formdev.flatlaf.FlatClientProperties;
 import com.formdev.flatlaf.extras.FlatSVGIcon;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import javax.swing.JPanel;
 import javax.swing.LookAndFeel;
 import javax.swing.UIManager;
+import lk.clearview.main.components.RoundPanelFix;
 
 /**
  *
  * @author USER
  */
-public class ThemePanel extends javax.swing.JPanel {
+public class ThemePanel extends JPanel {
 
+    private ThemePanel themePanel;
     /**
      * Creates new form ThemePanel
      */
     public ThemePanel() {
         initComponents();
+        this.putClientProperty(FlatClientProperties.STYLE, "arc:15");
+        themePanel= this;
         UIManager.addPropertyChangeListener(new PropertyChangeListener() {
             @Override
             public void propertyChange(PropertyChangeEvent evt) {
@@ -33,12 +39,12 @@ public class ThemePanel extends javax.swing.JPanel {
     public void setTheme() {
         LookAndFeel theme = UIManager.getLookAndFeel();
         if (theme.getClass().getSimpleName().equals("FlatMacDarkLaf")) {
-            jLabel1.setText("Changed to a Dark Theme");
-            jLabel2.setText("Welcome to the Night!");
+            jLabel2.setText("Changed to a Dark Theme");
+            jLabel1.setText("Welcome to the Night!");
             themePhoto.setIcon(new FlatSVGIcon("lk/clearview/main/resources/moon.svg", 400, 400));
         } else {
-            jLabel1.setText("Changed to a Light Theme");
-            jLabel2.setText("Welcome to the Light Side!");
+            jLabel2.setText("Changed to a Light Theme");
+            jLabel1.setText("Welcome to the Light Side!");
             themePhoto.setIcon(new FlatSVGIcon("lk/clearview/main/resources/sun.svg", 400, 400));
         }
     }
@@ -52,19 +58,19 @@ public class ThemePanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
         themePhoto = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-
-        jLabel1.setFont(new java.awt.Font("Segoe UI Semibold", 2, 24)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Changed to a Light Theme");
 
         themePhoto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("jLabel1");
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI Semibold", 2, 24)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("jLabel2");
+        jLabel2.setText("Changed to a Light Theme");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -75,21 +81,21 @@ public class ThemePanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(themePhoto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 732, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 732, Short.MAX_VALUE))
                         .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(43, 43, 43)
                 .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel1)
                 .addGap(5, 5, 5)
-                .addComponent(themePhoto, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addComponent(themePhoto, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
+                .addContainerGap(20, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

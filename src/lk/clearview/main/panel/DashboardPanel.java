@@ -14,20 +14,19 @@ import lk.clearview.part.senesh.dialog.UpdatePrescriptin;
 import lk.clearview.main.Dashboard;
 import lk.clearview.main.components.RoundPanelFix;
 import lk.clearview.main.constance.Variable;
+import raven.datetime.component.date.DatePicker;
 
 /**
  *
  * @author USER
  */
 public class DashboardPanel extends RoundPanelFix {
-
+    
     /**
      * Creates new form ManagePatient
      */
     public DashboardPanel() {
         initComponents();
-//        jPanel1.setBackground(UIManager.getColor("BACKGROUND"));
-//        jLabel1.setIcon(new FlatSVGIcon(UIManager.getString("DASHBOARD"), Variable.SLIDE_ICON_SIZE, Variable.SLIDE_ICON_SIZE));
     }
 
     /**

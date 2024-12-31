@@ -28,13 +28,6 @@ import lk.clearview.main.components.LinkSlide;
 import lk.clearview.main.constance.Variable;
 import lk.clearview.main.panel.DashboardPanel;
 import lk.clearview.main.panel.ThemePanel;
-import lk.clearview.part.dhanushka.panel.ManageAppointments;
-import lk.clearview.part.isira.panel.ManageActivities;
-import lk.clearview.part.isira.panel.ManageStaff;
-import lk.clearview.part.senesh.panel.ManagePatient;
-import lk.clearview.part.senesh.panel.ManagePrescription;
-import lk.clearview.part.senesh.panel.ProfileSettings;
-import lk.clearview.part.senesh.panel.Schedule;
 
 /**
  *
@@ -56,11 +49,12 @@ public class Dashboard extends javax.swing.JFrame {
             setToolTipText("Dashboard");
         }
     };
+//  Start Senesh Part
     protected LinkSlide slide2 = new LinkSlide(UIManager.getString("LIST"), Variable.SLIDE_ICON_SIZE, Variable.SLIDE_ICON_SIZE) {
         @Override
         public void setCommand() {
             changeClickPanel(getjPanel1());
-            changeView(new ManagePatient());
+            changeView(new lk.clearview.part.senesh.panel.ManagePatient());
         }
 
         @Override
@@ -72,7 +66,7 @@ public class Dashboard extends javax.swing.JFrame {
         @Override
         public void setCommand() {
             changeClickPanel(getjPanel1());
-            changeView(new ManagePrescription());
+            changeView(new lk.clearview.part.senesh.panel.ManagePrescription());
         }
 
         @Override
@@ -84,7 +78,7 @@ public class Dashboard extends javax.swing.JFrame {
         @Override
         public void setCommand() {
             changeClickPanel(getjPanel1());
-            changeView(new Schedule());
+            changeView(new lk.clearview.part.senesh.panel.Schedule());
         }
 
         @Override
@@ -92,11 +86,51 @@ public class Dashboard extends javax.swing.JFrame {
             setToolTipText("Schedule Appointment");
         }
     };
+//  end of senesh part
+//  start osini part
     protected LinkSlide slide5 = new LinkSlide("lk/clearview/main/resources/dashboard.svg", Variable.SLIDE_ICON_SIZE, Variable.SLIDE_ICON_SIZE) {
         @Override
         public void setCommand() {
             changeClickPanel(getjPanel1());
-            changeView(new ManageActivities());
+            changeView(new lk.clearview.part.osini.panel.ManageSupplier());
+        }
+
+        @Override
+        public void initial() {
+            setToolTipText("Manage Supplier");
+        }
+    };
+    protected LinkSlide slide6 = new LinkSlide("lk/clearview/main/resources/dashboard.svg", Variable.SLIDE_ICON_SIZE, Variable.SLIDE_ICON_SIZE) {
+        @Override
+        public void setCommand() {
+            changeClickPanel(getjPanel1());
+            changeView(new lk.clearview.part.osini.panel.ManageStock());
+        }
+
+        @Override
+        public void initial() {
+            setToolTipText("Manage Stock");
+        }
+    };
+    protected LinkSlide slide7 = new LinkSlide("lk/clearview/main/resources/dashboard.svg", Variable.SLIDE_ICON_SIZE, Variable.SLIDE_ICON_SIZE) {
+        @Override
+        public void setCommand() {
+            changeClickPanel(getjPanel1());
+            changeView(new lk.clearview.part.osini.panel.GrnAndItems());
+        }
+
+        @Override
+        public void initial() {
+            setToolTipText("Manage GRN and Items");
+        }
+    };
+//  end of osini part
+//  start isira part
+    protected LinkSlide slide8 = new LinkSlide("lk/clearview/main/resources/dashboard.svg", Variable.SLIDE_ICON_SIZE, Variable.SLIDE_ICON_SIZE) {
+        @Override
+        public void setCommand() {
+            changeClickPanel(getjPanel1());
+            changeView(new lk.clearview.part.isira.panel.ManageActivities());
         }
 
         @Override
@@ -104,11 +138,11 @@ public class Dashboard extends javax.swing.JFrame {
             setToolTipText("Manage Activities");
         }
     };
-    protected LinkSlide slide6 = new LinkSlide("lk/clearview/main/resources/dashboard.svg", Variable.SLIDE_ICON_SIZE, Variable.SLIDE_ICON_SIZE) {
+    protected LinkSlide slide9 = new LinkSlide("lk/clearview/main/resources/dashboard.svg", Variable.SLIDE_ICON_SIZE, Variable.SLIDE_ICON_SIZE) {
         @Override
         public void setCommand() {
             changeClickPanel(getjPanel1());
-            changeView(new ManageStaff());
+            changeView(new lk.clearview.part.isira.panel.ManageStaff());
         }
 
         @Override
@@ -116,7 +150,9 @@ public class Dashboard extends javax.swing.JFrame {
             setToolTipText("Manage Staff");
         }
     };
-    protected LinkSlide slide7 = new LinkSlide("lk/clearview/main/resources/dashboard.svg", Variable.SLIDE_ICON_SIZE, Variable.SLIDE_ICON_SIZE) {
+//  end of isira part
+//  start dhanushka part
+    protected LinkSlide slide10 = new LinkSlide("lk/clearview/main/resources/dashboard.svg", Variable.SLIDE_ICON_SIZE, Variable.SLIDE_ICON_SIZE) {
         @Override
         public void setCommand() {
             changeClickPanel(getjPanel1());
@@ -128,11 +164,11 @@ public class Dashboard extends javax.swing.JFrame {
             setToolTipText("Manage Patient");
         }
     };
-    protected LinkSlide slide8 = new LinkSlide("lk/clearview/main/resources/dashboard.svg", Variable.SLIDE_ICON_SIZE, Variable.SLIDE_ICON_SIZE) {
+    protected LinkSlide slide11 = new LinkSlide("lk/clearview/main/resources/dashboard.svg", Variable.SLIDE_ICON_SIZE, Variable.SLIDE_ICON_SIZE) {
         @Override
         public void setCommand() {
             changeClickPanel(getjPanel1());
-            changeView(new ManageAppointments());
+            changeView(new lk.clearview.part.dhanushka.panel.ManageAppointments());
         }
 
         @Override
@@ -140,6 +176,44 @@ public class Dashboard extends javax.swing.JFrame {
             setToolTipText("Manage Appointments");
         }
     };
+//  end of dhanushka part
+//  start of 
+//    protected LinkSlide slide12 = new LinkSlide("lk/clearview/main/resources/dashboard.svg", Variable.SLIDE_ICON_SIZE, Variable.SLIDE_ICON_SIZE) {
+//        @Override
+//        public void setCommand() {
+//            changeClickPanel(getjPanel1());
+//            changeView();
+//        }
+//
+//        @Override
+//        public void initial() {
+//            setToolTipText("Manage Appointments");
+//        }
+//    };
+//    protected LinkSlide slide13 = new LinkSlide("lk/clearview/main/resources/dashboard.svg", Variable.SLIDE_ICON_SIZE, Variable.SLIDE_ICON_SIZE) {
+//        @Override
+//        public void setCommand() {
+//            changeClickPanel(getjPanel1());
+//            changeView();
+//        }
+//
+//        @Override
+//        public void initial() {
+//            setToolTipText("Manage Appointments");
+//        }
+//    };
+//    protected LinkSlide slide14 = new LinkSlide("lk/clearview/main/resources/dashboard.svg", Variable.SLIDE_ICON_SIZE, Variable.SLIDE_ICON_SIZE) {
+//        @Override
+//        public void setCommand() {
+//            changeClickPanel(getjPanel1());
+//            changeView();
+//        }
+//
+//        @Override
+//        public void initial() {
+//            setToolTipText("Manage Appointments");
+//        }
+//    };
 
     /**
      * Creates new form Dashboard
@@ -147,6 +221,7 @@ public class Dashboard extends javax.swing.JFrame {
     public Dashboard() {
         initComponents();
         init();
+        init2();
         DASHBOARD = this;
         changeView(new DashboardPanel());
         changeClickPanel(slide1.getjPanel1());
@@ -163,6 +238,7 @@ public class Dashboard extends javax.swing.JFrame {
         loadSide();
         setTheme();
         setSlide();
+        setTheme2();
     }
 
     private void loadSide() {
@@ -175,6 +251,12 @@ public class Dashboard extends javax.swing.JFrame {
         slider.add(slide6);
         slider.add(slide7);
         slider.add(slide8);
+        slider.add(slide9);
+        slider.add(slide10);
+        slider.add(slide11);
+//        slider.add(slide12);
+//        slider.add(slide13);
+//        slider.add(slide14);
 
     }
 
@@ -188,13 +270,15 @@ public class Dashboard extends javax.swing.JFrame {
         Variable.LINK_SLIDER_ARRAY[6] = slide6.getjPanel1();
         Variable.LINK_SLIDER_ARRAY[7] = slide7.getjPanel1();
         Variable.LINK_SLIDER_ARRAY[8] = slide8.getjPanel1();
+        Variable.LINK_SLIDER_ARRAY[9] = slide9.getjPanel1();
+        Variable.LINK_SLIDER_ARRAY[10] = slide10.getjPanel1();
+        Variable.LINK_SLIDER_ARRAY[11] = slide11.getjPanel1();
+        
     }
 
     public void setPanelColor(JPanel... panels) {
         for (JPanel panel1 : panels) {
-            panel1.setBackground(UIManager.getColor("CUSTOM_BACKGROUND"));
-            System.out.println(UIManager.getColor("CUSTOM_BACKGROUND"));
-            System.out.println(panel1.getBackground());              
+            panel1.setBackground(UIManager.getColor("CUSTOM_BACKGROUND"));       
         }
     }
 
@@ -219,6 +303,28 @@ public class Dashboard extends javax.swing.JFrame {
         }
     }
 
+    
+    public void initial() {
+    }
+
+    private void init2() {
+        UIManager.addPropertyChangeListener(new PropertyChangeListener() {
+            @Override
+            public void propertyChange(PropertyChangeEvent evt) {
+                setTheme2();
+            }
+        });
+    }
+
+    public void setTheme2() {
+        LookAndFeel theme = UIManager.getLookAndFeel();
+        if (theme.getClass().getSimpleName().equals("FlatMacDarkLaf")) {
+            jPanel1.setBackground(Variable.BASE_DARK_BACKGROUND_COLOR);
+        } else {
+            jPanel1.setBackground(Variable.BASE_LIGHT_BACKGROUND_COLOR);
+        }
+    }
+    
     private void click() {
 
     }
@@ -277,6 +383,8 @@ public class Dashboard extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        panelHolder = new javax.swing.JLayeredPane();
         roundPanel1 = new lk.clearview.main.components.RoundPanelFix();
         jScrollPane1 = new javax.swing.JScrollPane();
         slider = new javax.swing.JPanel();
@@ -288,13 +396,14 @@ public class Dashboard extends javax.swing.JFrame {
         theme = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator4 = new javax.swing.JSeparator();
-        panelHolder = new javax.swing.JLayeredPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Clear View");
         setMinimumSize(new java.awt.Dimension(858, 612));
+
+        panelHolder.setLayout(new java.awt.BorderLayout());
 
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         jScrollPane1.setPreferredSize(new java.awt.Dimension(59, 112));
@@ -426,13 +535,32 @@ public class Dashboard extends javax.swing.JFrame {
                 .addGap(32, 32, 32)
                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(6, 6, 6)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 327, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 331, Short.MAX_VALUE)
                 .addGap(28, 28, 28)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
-        panelHolder.setLayout(new java.awt.BorderLayout());
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(12, 12, 12)
+                .addComponent(roundPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
+                .addComponent(panelHolder, javax.swing.GroupLayout.DEFAULT_SIZE, 686, Short.MAX_VALUE)
+                .addGap(12, 12, 12))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(12, 12, 12)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(roundPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelHolder))
+                .addGap(12, 12, 12))
+        );
 
         jMenuBar1.add(jMenu2);
 
@@ -442,21 +570,11 @@ public class Dashboard extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addComponent(roundPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
-                .addComponent(panelHolder, javax.swing.GroupLayout.DEFAULT_SIZE, 691, Short.MAX_VALUE)
-                .addGap(12, 12, 12))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(panelHolder)
-                    .addComponent(roundPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(12, 12, 12))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -495,7 +613,7 @@ public class Dashboard extends javax.swing.JFrame {
     private void setting_panelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_setting_panelMouseClicked
         // TODO add your handling code here:
         changeClickPanel(setting_panel);
-        changeView(new ProfileSettings());
+        changeView(new lk.clearview.main.panel.ProfileSettings());
     }//GEN-LAST:event_setting_panelMouseClicked
 
     public void scrollPaneOptimize(JScrollPane ScrollPane) {
@@ -530,6 +648,7 @@ public class Dashboard extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;

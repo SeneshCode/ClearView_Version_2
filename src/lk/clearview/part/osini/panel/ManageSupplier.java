@@ -5,13 +5,14 @@
 package lk.clearview.part.osini.panel;
 
 import lk.clearview.main.Dashboard;
+import lk.clearview.main.components.RoundPanelFix;
 import lk.clearview.part.osini.dialog.RegisterNewSupplier;
 import lk.clearview.part.osini.dialog.UpdateSupplier;
 /**
  *
  * @author acer
  */
-public class ManageSupplier extends javax.swing.JPanel {
+public class ManageSupplier extends RoundPanelFix {
 
     /**
      * Creates new form ManageSupplier
@@ -44,6 +45,7 @@ public class ManageSupplier extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(750, 475));
         setLayout(new java.awt.BorderLayout());
 
+        jPanel1.setOpaque(false);
         jPanel1.setPreferredSize(new java.awt.Dimension(750, 130));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -131,6 +133,7 @@ public class ManageSupplier extends javax.swing.JPanel {
 
         add(jPanel1, java.awt.BorderLayout.PAGE_START);
 
+        jPanel2.setOpaque(false);
         jPanel2.setPreferredSize(new java.awt.Dimension(750, 384));
 
         jPanel3.setLayout(new java.awt.BorderLayout());

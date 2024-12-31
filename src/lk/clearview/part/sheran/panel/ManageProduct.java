@@ -4,13 +4,14 @@
  */
 package lk.clearview.part.sheran.panel;
 
+import lk.clearview.main.components.RoundPanelFix;
 import lk.clearview.part.sheran.gui.FrameAndLensPrescriptionDetails;
 
 /**
  *
  * @author shera
  */
-public class ManageProduct extends javax.swing.JPanel {
+public class ManageProduct extends RoundPanelFix {
 
     /**
      * Creates new form ManageProduct
@@ -41,6 +42,8 @@ public class ManageProduct extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(761, 521));
         setRequestFocusEnabled(false);
 
+        jPanel1.setOpaque(false);
+
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lk/clearview/resources/technician/icons8-product-22.png"))); // NOI18N
         jLabel1.setText("Manage Product");
@@ -62,6 +65,8 @@ public class ManageProduct extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jPanel2.setOpaque(false);
+
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pending", "In Progress", "Completed", "Successfully Delivery" }));
 
         jTextField1.setText("Search order using order ID");
@@ -76,6 +81,8 @@ public class ManageProduct extends javax.swing.JPanel {
                 jButton1ActionPerformed(evt);
             }
         });
+
+        jPanel3.setOpaque(false);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

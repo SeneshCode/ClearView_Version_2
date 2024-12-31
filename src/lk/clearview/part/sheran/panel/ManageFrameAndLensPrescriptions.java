@@ -4,13 +4,14 @@
  */
 package lk.clearview.part.sheran.panel;
 
+import lk.clearview.main.components.RoundPanelFix;
 import lk.clearview.part.sheran.gui.AddToProduct;
 
 /**
  *
  * @author shera
  */
-public class ManageFrameAndLensPrescriptions extends javax.swing.JPanel {
+public class ManageFrameAndLensPrescriptions extends RoundPanelFix {
 
     /**
      * Creates new form ManageFrameAndLensPrescriptions
@@ -38,6 +39,8 @@ public class ManageFrameAndLensPrescriptions extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
 
+        jPanel1.setOpaque(false);
+
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lk/clearview/resources/technician/icons8-create-order-22 (1).png"))); // NOI18N
         jLabel1.setText("Manage Order");
@@ -59,6 +62,8 @@ public class ManageFrameAndLensPrescriptions extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jPanel2.setOpaque(false);
+
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pending", "In Progress", "Completed", "Successfully Delivery" }));
 
         jTextField1.setText("Search order using order ID");
@@ -73,6 +78,8 @@ public class ManageFrameAndLensPrescriptions extends javax.swing.JPanel {
                 jButton1ActionPerformed(evt);
             }
         });
+
+        jPanel3.setOpaque(false);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
