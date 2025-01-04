@@ -30,7 +30,7 @@ public interface Variable {
 //  Public Integer Variable 
     int SLIDE_ICON_SIZE = 15;
     int SLIDE_WIDTH = 78;
-    int SLIDE_COLLAPS_WIDTH = 198;
+    int SLIDE_COLLAPS_WIDTH = 208;
             
 //  Public Font
     Font DEFAULT_FONT = new Font("Josefin Sans Regular", Font.PLAIN, 13);
