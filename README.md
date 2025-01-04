@@ -2,12 +2,13 @@
 
 ## Team Assignments
 
-- **Osini**: Inventory / Finance
-- **Thamodani**: Dispensing optician / Finance
+- **Osini**: Inventory 
+- **Thamodani**: Dispensing optician 
 - **Senesh**: Optometrist Doctor  
 - **Sheran**: Technician
 - **Isira**: Admin
 - **Dhanushka**: Receptionist
+- **Isiri**: Finance
 
 ## Links
 
