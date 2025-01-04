@@ -50,11 +50,11 @@ public class DashboardPanel extends RoundPanelFix {
         roundPanelFix1.setLayout(roundPanelFix1Layout);
         roundPanelFix1Layout.setHorizontalGroup(
             roundPanelFix1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 715, Short.MAX_VALUE)
+            .addGap(0, 717, Short.MAX_VALUE)
         );
         roundPanelFix1Layout.setVerticalGroup(
             roundPanelFix1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 344, Short.MAX_VALUE)
+            .addGap(0, 340, Short.MAX_VALUE)
         );
 
         jScrollPane1.setViewportView(roundPanelFix1);

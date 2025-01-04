@@ -12,8 +12,16 @@ import com.formdev.flatlaf.extras.FlatSVGIcon;
 import com.formdev.flatlaf.themes.FlatMacDarkLaf;
 import com.formdev.flatlaf.themes.FlatMacLightLaf;
 import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.FontFormatException;
+import java.awt.GraphicsEnvironment;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.io.File;
+import java.io.IOException;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
@@ -23,6 +31,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.LookAndFeel;
 import javax.swing.SwingUtilities;
+import javax.swing.Timer;
 import javax.swing.UIManager;
 import lk.clearview.main.components.LinkSlide;
 import lk.clearview.main.constance.Variable;
@@ -223,7 +232,7 @@ public class Dashboard extends javax.swing.JFrame {
         init();
         init2();
         DASHBOARD = this;
-        changeView(new DashboardPanel());
+//        changeView(new DashboardPanel());
         changeClickPanel(slide1.getjPanel1());
     }
 
@@ -273,12 +282,12 @@ public class Dashboard extends javax.swing.JFrame {
         Variable.LINK_SLIDER_ARRAY[9] = slide9.getjPanel1();
         Variable.LINK_SLIDER_ARRAY[10] = slide10.getjPanel1();
         Variable.LINK_SLIDER_ARRAY[11] = slide11.getjPanel1();
-        
+
     }
 
     public void setPanelColor(JPanel... panels) {
         for (JPanel panel1 : panels) {
-            panel1.setBackground(UIManager.getColor("CUSTOM_BACKGROUND"));       
+            panel1.setBackground(UIManager.getColor("CUSTOM_BACKGROUND"));
         }
     }
 
@@ -303,7 +312,6 @@ public class Dashboard extends javax.swing.JFrame {
         }
     }
 
-    
     public void initial() {
     }
 
@@ -324,7 +332,7 @@ public class Dashboard extends javax.swing.JFrame {
             jPanel1.setBackground(Variable.BASE_LIGHT_BACKGROUND_COLOR);
         }
     }
-    
+
     private void click() {
 
     }
@@ -385,17 +393,28 @@ public class Dashboard extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         panelHolder = new javax.swing.JLayeredPane();
+        jPanel3 = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
+        jPanel5 = new javax.swing.JPanel();
+        jPanel6 = new javax.swing.JPanel();
         roundPanel1 = new lk.clearview.main.components.RoundPanelFix();
         jScrollPane1 = new javax.swing.JScrollPane();
         slider = new javax.swing.JPanel();
-        logo = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         setting_panel = new javax.swing.JPanel();
+        setting_label = new javax.swing.JLabel();
         setting = new javax.swing.JLabel();
         theme_panel = new javax.swing.JPanel();
         theme = new javax.swing.JLabel();
+        theme_label = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator4 = new javax.swing.JSeparator();
+        jPanel7 = new javax.swing.JPanel();
+        theme_panel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        logo = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
 
@@ -405,6 +424,73 @@ public class Dashboard extends javax.swing.JFrame {
 
         panelHolder.setLayout(new java.awt.BorderLayout());
 
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 387, Short.MAX_VALUE)
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 132, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 133, Short.MAX_VALUE)
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 50, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 55, Short.MAX_VALUE)
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 50, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(127, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(185, 185, 185))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(141, 141, 141))))))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(59, 59, 59)
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(111, 111, 111)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(162, Short.MAX_VALUE))
+        );
+
+        panelHolder.add(jPanel3, java.awt.BorderLayout.CENTER);
+
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         jScrollPane1.setPreferredSize(new java.awt.Dimension(59, 112));
 
@@ -412,7 +498,7 @@ public class Dashboard extends javax.swing.JFrame {
         slider.setLayout(sliderLayout);
         sliderLayout.setHorizontalGroup(
             sliderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+            .addGap(0, 324, Short.MAX_VALUE)
         );
         sliderLayout.setVerticalGroup(
             sliderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -420,8 +506,6 @@ public class Dashboard extends javax.swing.JFrame {
         );
 
         jScrollPane1.setViewportView(slider);
-
-        logo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         setting_panel.setToolTipText("Settings");
         setting_panel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -439,6 +523,9 @@ public class Dashboard extends javax.swing.JFrame {
             }
         });
 
+        setting_label.setFont(new java.awt.Font("Josefin Sans SemiBold", 0, 12)); // NOI18N
+        setting_label.setText("Setting");
+
         setting.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout setting_panelLayout = new javax.swing.GroupLayout(setting_panel);
@@ -446,12 +533,18 @@ public class Dashboard extends javax.swing.JFrame {
         setting_panelLayout.setHorizontalGroup(
             setting_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(setting_panelLayout.createSequentialGroup()
-                .addComponent(setting, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
-                .addGap(0, 0, 0))
+                .addComponent(setting, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(setting_label)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         setting_panelLayout.setVerticalGroup(
             setting_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(setting, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, setting_panelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(setting_label, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         theme_panel.setToolTipText("Change Theme");
@@ -472,17 +565,26 @@ public class Dashboard extends javax.swing.JFrame {
 
         theme.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
+        theme_label.setFont(new java.awt.Font("Josefin Sans SemiBold", 0, 12)); // NOI18N
+        theme_label.setText("Theme");
+
         javax.swing.GroupLayout theme_panelLayout = new javax.swing.GroupLayout(theme_panel);
         theme_panel.setLayout(theme_panelLayout);
         theme_panelLayout.setHorizontalGroup(
             theme_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(theme_panelLayout.createSequentialGroup()
-                .addComponent(theme, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
-                .addGap(0, 0, 0))
+                .addComponent(theme, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(theme_label)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         theme_panelLayout.setVerticalGroup(
             theme_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(theme, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, theme_panelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(theme_label, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -492,9 +594,9 @@ public class Dashboard extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(theme_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(setting_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jSeparator1)
+                    .addComponent(setting_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(theme_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -503,39 +605,96 @@ public class Dashboard extends javax.swing.JFrame {
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(2, 2, 2)
                 .addComponent(theme_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                 .addComponent(setting_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
+        );
+
+        theme_panel1.setToolTipText("Change Theme");
+        theme_panel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        theme_panel1.setMaximumSize(new java.awt.Dimension(50, 50));
+        theme_panel1.setMinimumSize(new java.awt.Dimension(50, 50));
+        theme_panel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                theme_panel1MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                theme_panel1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                theme_panel1MouseExited(evt);
+            }
+        });
+        theme_panel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("Josefin Sans", 0, 20)); // NOI18N
+        jLabel1.setText("Clear");
+        theme_panel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(58, 6, -1, -1));
+
+        jLabel2.setFont(new java.awt.Font("Josefin Sans", 0, 20)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 113, 242));
+        jLabel2.setText("View");
+        theme_panel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(113, 6, -1, -1));
+
+        jLabel3.setFont(new java.awt.Font("Josefin Sans", 0, 12)); // NOI18N
+        jLabel3.setText("Senesh Pawan");
+        theme_panel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(58, 24, 110, 20));
+
+        logo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        logo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        logo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                logoMouseClicked(evt);
+            }
+        });
+        theme_panel1.add(logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(9, 0, 40, 40));
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(theme_panel1, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(theme_panel1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout roundPanel1Layout = new javax.swing.GroupLayout(roundPanel1);
         roundPanel1.setLayout(roundPanel1Layout);
         roundPanel1Layout.setHorizontalGroup(
             roundPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(logo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(roundPanel1Layout.createSequentialGroup()
                 .addGroup(roundPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, roundPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(roundPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, roundPanel1Layout.createSequentialGroup()
-                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))))
+                            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(roundPanel1Layout.createSequentialGroup()
                         .addGap(12, 12, 12)
-                        .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jSeparator4)
+                        .addGap(8, 8, 8))
+                    .addGroup(roundPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         roundPanel1Layout.setVerticalGroup(
             roundPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(roundPanel1Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(logo, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32)
                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(6, 6, 6)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 331, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(28, 28, 28)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -549,7 +708,7 @@ public class Dashboard extends javax.swing.JFrame {
                 .addGap(12, 12, 12)
                 .addComponent(roundPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12)
-                .addComponent(panelHolder, javax.swing.GroupLayout.DEFAULT_SIZE, 686, Short.MAX_VALUE)
+                .addComponent(panelHolder)
                 .addGap(12, 12, 12))
         );
         jPanel1Layout.setVerticalGroup(
@@ -557,7 +716,7 @@ public class Dashboard extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(12, 12, 12)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(roundPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(roundPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 582, Short.MAX_VALUE)
                     .addComponent(panelHolder))
                 .addGap(12, 12, 12))
         );
@@ -616,6 +775,103 @@ public class Dashboard extends javax.swing.JFrame {
         changeView(new lk.clearview.main.panel.ProfileSettings());
     }//GEN-LAST:event_setting_panelMouseClicked
 
+    private void logoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoMouseClicked
+        // Logo Mouse Clicked
+        if (roundPanel1.getWidth() < Variable.SLIDE_COLLAPS_WIDTH) {
+            expan();
+        } else {
+            collaps();
+        }
+//        System.out.println(roundPanel1.getWidth());
+    }//GEN-LAST:event_logoMouseClicked
+
+    private void theme_panel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_theme_panel1MouseClicked
+        // Logo Panel
+        if (roundPanel1.getWidth() < Variable.SLIDE_COLLAPS_WIDTH) {
+            expan();
+        } else {
+            collaps();
+        }
+//        System.out.println(roundPanel1.getWidth());
+    }//GEN-LAST:event_theme_panel1MouseClicked
+
+    private void theme_panel1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_theme_panel1MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_theme_panel1MouseEntered
+
+    private void theme_panel1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_theme_panel1MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_theme_panel1MouseExited
+
+    public void clickColorAccurate() {
+        for (javax.swing.JPanel panel1 : Variable.LINK_SLIDER_ARRAY) {
+            if (panel1.getBackground().equals(UIManager.getColor("CLICK_COLOR"))) {
+                for (int i = 0; i < Variable.LINK_SLIDER_ARRAY.length; i++) {
+                    if (Variable.LINK_SLIDER_ARRAY[i] == panel1) {
+                        panel1.setBackground(UIManager.getColor("CLICK_COLOR"));
+                    } else {
+                        LookAndFeel theme = UIManager.getLookAndFeel();
+                        if (theme.getClass().getSimpleName().equals("FlatMacDarkLaf")) {
+                            Variable.LINK_SLIDER_ARRAY[i].setBackground(Variable.DARK_BACKGROUND_COLOR);
+                        } else {
+                            Variable.LINK_SLIDER_ARRAY[i].setBackground(Variable.LIGHT_BACKGROUND_COLOR);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    public void expan() {
+//        [74, 582]
+        // Timer with 1 ms delay
+        Timer timer = new Timer(1, e -> {
+            // The target width you want to animate to
+            int targetWidth = Variable.SLIDE_COLLAPS_WIDTH;
+
+            // Get the current width of the panel
+            int currentWidth = roundPanel1.getPreferredSize().width;
+
+            // Animate by incrementing the width
+            if (currentWidth < targetWidth) {
+                currentWidth += 5;  // Increase width by 2 pixels
+                roundPanel1.setPreferredSize(new Dimension(currentWidth, roundPanel1.getHeight()));
+//                clickColorAccurate();
+                SwingUtilities.updateComponentTreeUI(roundPanel1);  // Update the panel size
+            } else {
+                ((Timer) e.getSource()).stop();  // Stop the timer once the target width is reached
+            }
+        });
+
+        // Start the timer
+        timer.start();
+
+    }
+
+    public void collaps() {
+        // Timer with 1 ms delay
+        Timer timer = new Timer(1, e -> {
+            // The target width you want to animate to
+            int targetWidth = Variable.SLIDE_WIDTH;
+
+            // Get the current width of the panel
+            int currentWidth = roundPanel1.getPreferredSize().width;
+
+            // Animate by decrementing the width
+            if (currentWidth > targetWidth) {
+                currentWidth -= 5;  // Decrease width by 2 pixels
+                roundPanel1.setPreferredSize(new Dimension(currentWidth, roundPanel1.getHeight()));
+                SwingUtilities.updateComponentTreeUI(roundPanel1);  // Update the panel size
+//                clickColorAccurate();
+            } else {
+                ((Timer) e.getSource()).stop();  // Stop the timer once the target width is reached
+            }
+        });
+
+        // Start the timer
+        timer.start();
+    }
+
     public void scrollPaneOptimize(JScrollPane ScrollPane) {
         ScrollPane.setBorder(BorderFactory.createEmptyBorder());
         ScrollPane.setViewportBorder(BorderFactory.createEmptyBorder());
@@ -631,10 +887,14 @@ public class Dashboard extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
+
+
         /* Set the Nimbus look and feel */
         FlatLafRegisterCustomDefaultsSource();
         FlatMacLightLaf.setup();
 //        FlatMacDarkLaf.setup();
+
+        UIManager.put("defaultFont", Variable.DEFAULT_FONT);
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -646,10 +906,18 @@ public class Dashboard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator4;
@@ -657,9 +925,12 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JLayeredPane panelHolder;
     private lk.clearview.main.components.RoundPanelFix roundPanel1;
     private javax.swing.JLabel setting;
+    private javax.swing.JLabel setting_label;
     private javax.swing.JPanel setting_panel;
     private javax.swing.JPanel slider;
     private javax.swing.JLabel theme;
+    private javax.swing.JLabel theme_label;
     private javax.swing.JPanel theme_panel;
+    private javax.swing.JPanel theme_panel1;
     // End of variables declaration//GEN-END:variables
 }

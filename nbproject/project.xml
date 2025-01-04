@@ -17,6 +17,7 @@
         <references xmlns="http://www.netbeans.org/ns/ant-project-references/1"/>
         <spellchecker-wordlist xmlns="http://www.netbeans.org/ns/spellchecker-wordlist/1">
             <word>accentBaseColor</word>
+            <word>baseFontKey</word>
             <word>baseMargin</word>
             <word>CAF</word>
             <word>calander</word>
@@ -28,6 +29,7 @@
             <word>FlatEmptyBorder</word>
             <word>flatlaf</word>
             <word>formdev</word>
+            <word>JosefinSans</word>
             <word>lk</word>
             <word>RADIOUS</word>
             <word>rgb</word>
