@@ -20,12 +20,31 @@
 - Project proposal - [Project proposal ClearView](https://1drv.ms/w/s!AlZVGvNYSWtljn1A8Oclivr3FLpL?e=zLqrSM)
 - Track Tasks - [Track Project Tasks](https://docs.google.com/spreadsheets/d/16YhA8w9VYWCigiyo6h95EXaUB0WBxx84EmUaNq9X16A/edit?gid=1919180471#gid=1919180471)
 - Icon Site - [Icons](https://icons8.com/icons/set/icons)
+- HeroIcon Site - [Icons](https://heroicons.com/outline)
 - SVG Site - [Storyset](https://storyset.com/)
 
+## Dashboard of clear view 
+- **Dark Theme version**:
+![Clear view Dashboard](dashboard_dark_theme.png)
+- **Light Theme version**:
+![Clear view Dashboard](dashboard_light_theme.png)
 
-## Dashboard Slide Bar Icon size : 
-  - width: 22 pixels
-  - height: 22 pixels
+
+## Dashboard Slide Bar Icon: 
+  - formet: svg
+  - quantity: 2 of different color
+  - color 1:
+    ```
+    #0360FF
+    ```
+  - color 2:
+    ```
+    #FFFFFF
+    ```
+  - lastly add file name to :
+      - dark svg : ```dark```
+      - light svg : ```light```
+    
 
 ## Color Theme : 
   - High priority: ( Green ) 
@@ -63,34 +82,34 @@
 ## Packages Names : 
   - Osini's package name 
 ```
-inventory 
+lk.clearview.part.osini 
 ```
   - Thamodani's package name 
 ```
-dispensing
+lk.clearview.part.thamodini
 ```
   - Senesh's package name   
 ```
-doctor
+lk.clearview.part.senesh
 ```
   - Sheran's package name   
 ```
-technician
+lk.clearview.part.sheran
 ```
   - Dhanushka's package name   
 ```
-receptionist
+lk.clearview.part.dhanushka
 ```
   - Isira's package name
 ```
-admin
+lk.clearview.part.isira
 ```
-  - Osini and Thamodani have 1 package that name  
+  - Isiri's package name
 ```
-finance
+lk.clearview.part.isiri
 ```
 
-
+( bellow code not use this version)
 ## Method of set dashboard names
  - we must call ```setNameofDashboards()``` method at constructor.
 ```java
