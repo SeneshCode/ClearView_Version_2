@@ -69,6 +69,7 @@ public class Dashboard extends javax.swing.JFrame {
         @Override
         public void initial() {
             setToolTipText("Manage Patient");
+            setText("Manage Patient");
         }
     };
     protected LinkSlide slide3 = new LinkSlide(UIManager.getString("EDIT"), Variable.SLIDE_ICON_SIZE, Variable.SLIDE_ICON_SIZE) {
@@ -81,6 +82,7 @@ public class Dashboard extends javax.swing.JFrame {
         @Override
         public void initial() {
             setToolTipText("Manage Prescription");
+            setText("Manage Prescription");
         }
     };
     protected LinkSlide slide4 = new LinkSlide(UIManager.getString("CALANDER"), Variable.SLIDE_ICON_SIZE, Variable.SLIDE_ICON_SIZE) {
@@ -97,7 +99,7 @@ public class Dashboard extends javax.swing.JFrame {
     };
 //  end of senesh part
 //  start osini part
-    protected LinkSlide slide5 = new LinkSlide("lk/clearview/main/resources/dashboard.svg", Variable.SLIDE_ICON_SIZE, Variable.SLIDE_ICON_SIZE) {
+    protected LinkSlide slide5 = new LinkSlide(UIManager.getString("ICONTEST"), Variable.SLIDE_ICON_SIZE, Variable.SLIDE_ICON_SIZE) {
         @Override
         public void setCommand() {
             changeClickPanel(getjPanel1());
@@ -107,6 +109,7 @@ public class Dashboard extends javax.swing.JFrame {
         @Override
         public void initial() {
             setToolTipText("Manage Supplier");
+            setText("Manage Supplier");
         }
     };
     protected LinkSlide slide6 = new LinkSlide("lk/clearview/main/resources/dashboard.svg", Variable.SLIDE_ICON_SIZE, Variable.SLIDE_ICON_SIZE) {
@@ -183,6 +186,19 @@ public class Dashboard extends javax.swing.JFrame {
         @Override
         public void initial() {
             setToolTipText("Manage Appointments");
+        }
+    };
+    protected LinkSlide slide12 = new LinkSlide(UIManager.getString("ICONTEST"), Variable.SLIDE_ICON_SIZE, Variable.SLIDE_ICON_SIZE){
+        @Override
+        public void setCommand() {
+            changeClickPanel(getjPanel1());
+            changeView(new lk.clearview.part.isira.panel.ManageActivities());
+        }
+
+        @Override
+        public void initial() {
+            setToolTipText("Tool Tip text");
+            setText("New Slide Variable");
         }
     };
 //  end of dhanushka part
@@ -263,7 +279,7 @@ public class Dashboard extends javax.swing.JFrame {
         slider.add(slide9);
         slider.add(slide10);
         slider.add(slide11);
-//        slider.add(slide12);
+        slider.add(slide12);
 //        slider.add(slide13);
 //        slider.add(slide14);
 
@@ -282,6 +298,7 @@ public class Dashboard extends javax.swing.JFrame {
         Variable.LINK_SLIDER_ARRAY[9] = slide9.getjPanel1();
         Variable.LINK_SLIDER_ARRAY[10] = slide10.getjPanel1();
         Variable.LINK_SLIDER_ARRAY[11] = slide11.getjPanel1();
+        Variable.LINK_SLIDER_ARRAY[12] = slide12.getjPanel1();
 
     }
 

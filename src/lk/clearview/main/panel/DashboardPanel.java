@@ -42,7 +42,7 @@ public class DashboardPanel extends RoundPanelFix {
         jScrollPane1 = new javax.swing.JScrollPane();
         roundPanelFix1 = new lk.clearview.main.components.RoundPanelFix();
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Josefin Sans SemiBold", 0, 20)); // NOI18N
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lk/clearview/main/resources/icons8-dashboard-layout-22.png"))); // NOI18N
         jLabel1.setText("Welcome to Dashboard");
 

@@ -36,6 +36,6 @@ public interface Variable {
     Font DEFAULT_FONT = new Font("Josefin Sans Regular", Font.PLAIN, 13);
 
 //  Slide Panel Array
-    JPanel[] LINK_SLIDER_ARRAY = new JPanel[12];
+    JPanel[] LINK_SLIDER_ARRAY = new JPanel[13];
     
 }
