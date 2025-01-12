@@ -42,13 +42,13 @@ public class ClearViewLogin extends javax.swing.JFrame {
     private void setThemeOfLogin() {
         LookAndFeel getTheme = UIManager.getLookAndFeel();
         if (getTheme.getClass().getSimpleName().equals("FlatMacDarkLaf")) {
-            jLabel1.setIcon(new FlatSVGIcon("lk/clearview/main/resources/optical.svg", 600, 400));
+            jLabel1.setIcon(new FlatSVGIcon("lk/clearview/main/resources/optical.svg", 580, 400));
             jPanel1.setBackground(new Color(22,22,24));
             jPanel2.setBackground(new Color(22,22,24));
             jButton2.setText("Chanage Theme to Light");
             jButton2.setBackground(new Color(30,30,30));
         } else {
-            jLabel1.setIcon(new FlatSVGIcon("lk/clearview/main/resources/optical2.svg", 600, 400));
+            jLabel1.setIcon(new FlatSVGIcon("lk/clearview/main/resources/optical2.svg", 580, 400));
             jPanel1.setBackground(new Color(255,255,255));
             jPanel2.setBackground(new Color(255,255,255));
             jButton2.setText("Chanage Theme to Dark");
