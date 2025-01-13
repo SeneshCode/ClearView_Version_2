@@ -45,8 +45,12 @@ import lk.clearview.main.panel.ThemePanel;
 public class Dashboard extends javax.swing.JFrame {
 
     public static Dashboard DASHBOARD;
+    protected String username;
+    protected String firstname;
+    protected String lastname;
+    protected String usertype;
 
-    protected LinkSlide slide1 = new LinkSlide(UIManager.getString("DASHBOARD"), Variable.SLIDE_ICON_SIZE, Variable.SLIDE_ICON_SIZE) {
+    protected LinkSlide slide1 = new LinkSlide("lk/clearview/main/resources/dashboard.svg", Variable.SLIDE_ICON_SIZE, Variable.SLIDE_ICON_SIZE) {
         @Override
         public void setCommand() {
             changeClickPanel(getjPanel1());
@@ -59,7 +63,7 @@ public class Dashboard extends javax.swing.JFrame {
         }
     };
 //  Start Senesh Part
-    protected LinkSlide slide2 = new LinkSlide(UIManager.getString("LIST"), Variable.SLIDE_ICON_SIZE, Variable.SLIDE_ICON_SIZE) {
+    protected LinkSlide slide2 = new LinkSlide("lk/clearview/main/resources/list.svg", Variable.SLIDE_ICON_SIZE, Variable.SLIDE_ICON_SIZE) {
         @Override
         public void setCommand() {
             changeClickPanel(getjPanel1());
@@ -72,7 +76,7 @@ public class Dashboard extends javax.swing.JFrame {
             setText("Manage Patient");
         }
     };
-    protected LinkSlide slide3 = new LinkSlide(UIManager.getString("EDIT"), Variable.SLIDE_ICON_SIZE, Variable.SLIDE_ICON_SIZE) {
+    protected LinkSlide slide3 = new LinkSlide("lk/clearview/main/resources/edit.svg", Variable.SLIDE_ICON_SIZE, Variable.SLIDE_ICON_SIZE) {
         @Override
         public void setCommand() {
             changeClickPanel(getjPanel1());
@@ -85,7 +89,7 @@ public class Dashboard extends javax.swing.JFrame {
             setText("Manage Prescription");
         }
     };
-    protected LinkSlide slide4 = new LinkSlide(UIManager.getString("CALANDER"), Variable.SLIDE_ICON_SIZE, Variable.SLIDE_ICON_SIZE) {
+    protected LinkSlide slide4 = new LinkSlide("lk/clearview/main/resources/calander.svg", Variable.SLIDE_ICON_SIZE, Variable.SLIDE_ICON_SIZE) {
         @Override
         public void setCommand() {
             changeClickPanel(getjPanel1());
@@ -99,7 +103,7 @@ public class Dashboard extends javax.swing.JFrame {
     };
 //  end of senesh part
 //  start osini part
-    protected LinkSlide slide5 = new LinkSlide(UIManager.getString("ICONTEST"), Variable.SLIDE_ICON_SIZE, Variable.SLIDE_ICON_SIZE) {
+    protected LinkSlide slide5 = new LinkSlide("lk/clearview/part/senesh/resources/iconTest.svg", Variable.SLIDE_ICON_SIZE, Variable.SLIDE_ICON_SIZE) {
         @Override
         public void setCommand() {
             changeClickPanel(getjPanel1());
@@ -188,7 +192,7 @@ public class Dashboard extends javax.swing.JFrame {
             setToolTipText("Manage Appointments");
         }
     };
-    protected LinkSlide slide12 = new LinkSlide(UIManager.getString("ICONTEST"), Variable.SLIDE_ICON_SIZE, Variable.SLIDE_ICON_SIZE){
+    protected LinkSlide slide12 = new LinkSlide("lk/clearview/main/resources/dashboard.svg", Variable.SLIDE_ICON_SIZE, Variable.SLIDE_ICON_SIZE) {
         @Override
         public void setCommand() {
             changeClickPanel(getjPanel1());
@@ -243,8 +247,12 @@ public class Dashboard extends javax.swing.JFrame {
     /**
      * Creates new form Dashboard
      */
-    public Dashboard() {
+    public Dashboard(String username, String user_type, String FirstName, String LastName) {
         initComponents();
+        this.username = username;
+        this.usertype = user_type;
+        this.firstname = FirstName;
+        this.lastname = LastName;
         init();
         init2();
         DASHBOARD = this;
@@ -253,13 +261,14 @@ public class Dashboard extends javax.swing.JFrame {
     }
 
     public void init() {
-        this.setIconImage(new ImageIcon(getClass().getResource("./resources/lightlogo.png")).getImage());
-        logo.setIcon(new FlatSVGIcon(UIManager.getString("LOGO"), 42, 23));
+        this.setIconImage(new ImageIcon(getClass().getResource("resources/lightlogo.png")).getImage());
+        logo.setIcon(new FlatSVGIcon("lk/clearview/main/resources/logo.svg", 42, 23));
         scrollPaneOptimize(jScrollPane1);
-        theme.setIcon(new FlatSVGIcon(UIManager.getString("THEME"), Variable.SLIDE_ICON_SIZE, Variable.SLIDE_ICON_SIZE));
+        theme.setIcon(new FlatSVGIcon("lk/clearview/main/resources/theme.svg", Variable.SLIDE_ICON_SIZE, Variable.SLIDE_ICON_SIZE));
         theme_panel.putClientProperty(FlatClientProperties.STYLE, "arc:15");
-        setting.setIcon(new FlatSVGIcon(UIManager.getString("SETTINGS"), Variable.SLIDE_ICON_SIZE, Variable.SLIDE_ICON_SIZE));
+        setting.setIcon(new FlatSVGIcon("lk/clearview/main/resources/settings.svg", Variable.SLIDE_ICON_SIZE, Variable.SLIDE_ICON_SIZE));
         setting_panel.putClientProperty(FlatClientProperties.STYLE, "arc:15");
+        jLabel3.setText(firstname + " " + lastname);
         loadSide();
         setTheme();
         setSlide();
@@ -269,20 +278,48 @@ public class Dashboard extends javax.swing.JFrame {
     private void loadSide() {
         slider.setLayout(new BoxLayout(slider, BoxLayout.Y_AXIS));
         slider.add(slide1);
-        slider.add(slide2);
-        slider.add(slide3);
-        slider.add(slide4);
-        slider.add(slide5);
-        slider.add(slide6);
-        slider.add(slide7);
-        slider.add(slide8);
-        slider.add(slide9);
-        slider.add(slide10);
-        slider.add(slide11);
-        slider.add(slide12);
+
+        switch (usertype) {
+//          Senesh
+            case "optometrist doctor":
+                slider.add(slide2);
+                slider.add(slide3);
+                slider.add(slide4);
+                break;
+//          Osini
+            case "inventor":
+                slider.add(slide5);
+                slider.add(slide6);
+                slider.add(slide7);
+                break;
+//          Isira
+            case "admin":
+                slider.add(slide8);
+                slider.add(slide9);
+                break;
+//          Dhanushka
+            case "receptionist":
+                slider.add(slide10);
+                slider.add(slide11);
+                slider.add(slide12);
+                break;
+//          Thamodini
+            case "dispensing optician":
+                break;
+//          Sheran
+            case "technician":
+
+                break;
+//          Isiri
+            case "finance":
+
+                break;
+            default:
+                throw new AssertionError();
+        }
+
 //        slider.add(slide13);
 //        slider.add(slide14);
-
     }
 
     private void setSlide() {
@@ -382,12 +419,11 @@ public class Dashboard extends javax.swing.JFrame {
 
     public void changeTheme() {
         LookAndFeel getTheme = UIManager.getLookAndFeel();
-        if (getTheme.getClass().getSimpleName().equals("FlatMacDarkLaf")) {
-            FlatLafRegisterCustomDefaultsSource();
-            FlatMacLightLaf.setup();
-        } else {
-            FlatLafRegisterCustomDefaultsSource();
+        FlatLafRegisterCustomDefaultsSource();
+        if (getTheme.getClass().getSimpleName().equals(Variable.LIGHT_THEME_STRING)) {
             FlatMacDarkLaf.setup();
+        } else {
+            FlatMacLightLaf.setup();
         }
         SwingUtilities.updateComponentTreeUI(this);
         setTheme();
@@ -483,7 +519,7 @@ public class Dashboard extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(326, Short.MAX_VALUE))
+                        .addContainerGap(221, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -503,7 +539,7 @@ public class Dashboard extends javax.swing.JFrame {
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(111, 111, 111)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(162, Short.MAX_VALUE))
+                .addContainerGap(161, Short.MAX_VALUE))
         );
 
         panelHolder.add(jPanel3, java.awt.BorderLayout.CENTER);
@@ -721,7 +757,7 @@ public class Dashboard extends javax.swing.JFrame {
                 .addGap(12, 12, 12)
                 .addComponent(roundPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12)
-                .addComponent(panelHolder)
+                .addComponent(panelHolder, javax.swing.GroupLayout.DEFAULT_SIZE, 614, Short.MAX_VALUE)
                 .addGap(12, 12, 12))
         );
         jPanel1Layout.setVerticalGroup(
@@ -729,8 +765,8 @@ public class Dashboard extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(12, 12, 12)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(roundPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 582, Short.MAX_VALUE)
-                    .addComponent(panelHolder))
+                    .addComponent(roundPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelHolder, javax.swing.GroupLayout.DEFAULT_SIZE, 581, Short.MAX_VALUE))
                 .addGap(12, 12, 12))
         );
 
@@ -824,10 +860,10 @@ public class Dashboard extends javax.swing.JFrame {
                         panel1.setBackground(UIManager.getColor("CLICK_COLOR"));
                     } else {
                         LookAndFeel theme = UIManager.getLookAndFeel();
-                        if (theme.getClass().getSimpleName().equals("FlatMacDarkLaf")) {
-                            Variable.LINK_SLIDER_ARRAY[i].setBackground(Variable.DARK_BACKGROUND_COLOR);
-                        } else {
+                        if (theme.getClass().getSimpleName().equals(Variable.LIGHT_THEME_STRING)) {
                             Variable.LINK_SLIDER_ARRAY[i].setBackground(Variable.LIGHT_BACKGROUND_COLOR);
+                        } else {
+                            Variable.LINK_SLIDER_ARRAY[i].setBackground(Variable.DARK_BACKGROUND_COLOR);
                         }
                     }
                 }
@@ -871,7 +907,7 @@ public class Dashboard extends javax.swing.JFrame {
             int currentWidth = roundPanel1.getPreferredSize().width;
 
             // Animate by decrementing the width
-            if (currentWidth > targetWidth ) {
+            if (currentWidth > targetWidth) {
                 currentWidth -= 10;  // Decrease width by 2 pixels
                 roundPanel1.setPreferredSize(new Dimension(currentWidth, roundPanel1.getHeight()));
                 SwingUtilities.updateComponentTreeUI(roundPanel1);  // Update the panel size
@@ -904,8 +940,8 @@ public class Dashboard extends javax.swing.JFrame {
 
         /* Set the Nimbus look and feel */
         FlatLafRegisterCustomDefaultsSource();
-        FlatMacLightLaf.setup();
-//        FlatMacDarkLaf.setup();
+//        FlatMacLightLaf.setup();
+        FlatMacDarkLaf.setup();
 
         UIManager.put("defaultFont", Variable.DEFAULT_FONT);
 
@@ -913,7 +949,7 @@ public class Dashboard extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new Dashboard().setVisible(true);
+                new Dashboard("200328712369", "optometrist doctor", "Senesh", "Pawan").setVisible(true);
             }
         });
     }

@@ -10,12 +10,16 @@ import com.formdev.flatlaf.themes.FlatMacLightLaf;
 import java.awt.Color;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.sql.ResultSet;
+import java.util.logging.Level;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.LookAndFeel;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import static lk.clearview.main.Dashboard.FlatLafRegisterCustomDefaultsSource;
 import lk.clearview.main.constance.Variable;
+import lk.clearview.main.model.MYSQL;
 import lk.clearview.main.panel.ThemePanel;
 
 /**
@@ -33,6 +37,7 @@ public class ClearViewLogin extends javax.swing.JFrame {
 //        this.setIconImage(new ImageIcon(getClass().getResource("../resources/eye-35.png")).getImage());
         init2();
         setThemeOfLogin();
+        loadingProgressBar.setVisible(false);
     }
 
 //    private void setSvg(){
@@ -41,18 +46,18 @@ public class ClearViewLogin extends javax.swing.JFrame {
 //    }
     private void setThemeOfLogin() {
         LookAndFeel getTheme = UIManager.getLookAndFeel();
-        if (getTheme.getClass().getSimpleName().equals("FlatMacDarkLaf")) {
-            jLabel1.setIcon(new FlatSVGIcon("lk/clearview/main/resources/optical.svg", 580, 400));
-            jPanel1.setBackground(new Color(22,22,24));
-            jPanel2.setBackground(new Color(22,22,24));
-            jButton2.setText("Chanage Theme to Light");
-            jButton2.setBackground(new Color(30,30,30));
-        } else {
+        if (getTheme.getClass().getSimpleName().equals(Variable.LIGHT_THEME_STRING)) {
             jLabel1.setIcon(new FlatSVGIcon("lk/clearview/main/resources/optical2.svg", 580, 400));
-            jPanel1.setBackground(new Color(255,255,255));
-            jPanel2.setBackground(new Color(255,255,255));
+            jPanel1.setBackground(new Color(255, 255, 255));
+            jPanel2.setBackground(new Color(255, 255, 255));
             jButton2.setText("Chanage Theme to Dark");
-            jButton2.setBackground(new Color(255,255,255));
+            jButton2.setBackground(new Color(255, 255, 255));
+        } else {
+            jLabel1.setIcon(new FlatSVGIcon("lk/clearview/main/resources/optical.svg", 580, 400));
+            jPanel1.setBackground(new Color(22, 22, 24));
+            jPanel2.setBackground(new Color(22, 22, 24));
+            jButton2.setText("Chanage Theme to Light");
+            jButton2.setBackground(new Color(30, 30, 30));
         }
     }
 
@@ -67,12 +72,12 @@ public class ClearViewLogin extends javax.swing.JFrame {
 
     public void changeTheme() {
         LookAndFeel getTheme = UIManager.getLookAndFeel();
-        if (getTheme.getClass().getSimpleName().equals("FlatMacDarkLaf")) {
-            FlatLafRegisterCustomDefaultsSource();
-            FlatMacLightLaf.setup();
-        } else {
+        if (getTheme.getClass().getSimpleName().equals(Variable.LIGHT_THEME_STRING)) {
             FlatLafRegisterCustomDefaultsSource();
             FlatMacDarkLaf.setup();
+        } else {
+            FlatLafRegisterCustomDefaultsSource();
+            FlatMacLightLaf.setup();
         }
         SwingUtilities.updateComponentTreeUI(this);
         setThemeOfLogin();
@@ -100,6 +105,7 @@ public class ClearViewLogin extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
+        loadingProgressBar = new javax.swing.JProgressBar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Clear View Login");
@@ -203,6 +209,10 @@ public class ClearViewLogin extends javax.swing.JFrame {
                 .addGap(28, 28, 28)
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 463, Short.MAX_VALUE))
             .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(65, 65, 65)
+                .addComponent(loadingProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, 703, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -227,10 +237,12 @@ public class ClearViewLogin extends javax.swing.JFrame {
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton2))
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 478, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel3)
-                .addContainerGap())
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 466, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(loadingProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, 4, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(8, 8, 8))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -265,9 +277,89 @@ public class ClearViewLogin extends javax.swing.JFrame {
         changeTheme();
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    public void removeProgress() {
+        loadingProgressBar.setVisible(false);
+    }
+
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // Log In Here
-        
+        String username = this.username.getText();
+        String password = String.valueOf(this.password.getPassword());
+        Thread tread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    if (username.isBlank()) {
+                        removeProgress();
+                        JOptionPane.showMessageDialog(ClearViewLogin.this, "Please Enter Your username!", "Warning", JOptionPane.WARNING_MESSAGE);
+                        ClearViewLogin.this.username.grabFocus();
+                    } else if (!username.matches("^([0-9]{9}[x|X|v|V]|[0-9]{12})$")) {
+                        for (int i = 2; i < 11; i++) {
+                            Thread.sleep(3);
+                            loadingProgressBar.setValue(i);
+                        }
+                        removeProgress();
+                        JOptionPane.showMessageDialog(ClearViewLogin.this, "Invalid Username!", "Warning", JOptionPane.WARNING_MESSAGE);
+                        ClearViewLogin.this.username.grabFocus();
+                    } else if (password.isEmpty()) {
+                        removeProgress();
+                        JOptionPane.showMessageDialog(ClearViewLogin.this, "Please Enter Your Password!", "Warning", JOptionPane.WARNING_MESSAGE);
+                        ClearViewLogin.this.password.grabFocus();
+                    } else {
+                        for (int i = 10; i < 36; i++) {
+                            Thread.sleep(4);
+                            loadingProgressBar.setValue(i);
+                        }
+                        try {
+                            for (int i = 35; i < 59; i++) {
+                                Thread.sleep(5);
+                                loadingProgressBar.setValue(i);
+                            }
+                            ResultSet resultSet = MYSQL.search("SELECT * FROM `staff` INNER JOIN `user_role` ON `staff`.`user_role_id`=`user_role`.`id` INNER JOIN `user_status` ON `staff`.`user_status_id`=`user_status`.`id` WHERE `staff`.`nic`='" + username + "' AND `staff`.`password`='" + password + "'");
+                            for (int i = 59; i < 71; i++) {
+                                Thread.sleep(2);
+                                loadingProgressBar.setValue(i);
+                            }
+                            if (resultSet.next()) {
+                                for (int i = 71; i < 100; i++) {
+                                    Thread.sleep(4);
+                                    loadingProgressBar.setValue(i);
+                                }
+//                                      JOptionPane.showMessageDialog(MyShopSignIn.this, "Successfully Login!", "Confirmation", JOptionPane.INFORMATION_MESSAGE);
+                                String user_type = resultSet.getString("user_role.role");
+                                String isBlock = resultSet.getString("user_status.status");
+                                loadingProgressBar.setValue(100);
+                                Thread.sleep(220);
+                                if (isBlock.equals("active") || isBlock.equals("inactive")) {
+                                    removeProgress();
+                                    Dashboard Dashboard = new Dashboard(username, user_type, resultSet.getString("first_name"), resultSet.getString("last_name"));
+                                    Dashboard.setVisible(true);
+                                    ClearViewLogin.this.dispose();
+                                } else if (isBlock.equals("block")) {
+                                    removeProgress();
+                                    JOptionPane.showMessageDialog(ClearViewLogin.this, "Block User!", "Warning", JOptionPane.ERROR_MESSAGE);
+                                }else {
+                                    removeProgress();
+                                    JOptionPane.showMessageDialog(ClearViewLogin.this, "Invalid User!", "Warning", JOptionPane.ERROR_MESSAGE);
+                                }
+                            } else {
+                                removeProgress();
+                                ClearViewLogin.this.username.setText("");
+                                ClearViewLogin.this.password.setText("");
+                                ClearViewLogin.this.username.grabFocus();
+                                JOptionPane.showMessageDialog(ClearViewLogin.this, "Invalid Username or Password!", "Warning", JOptionPane.ERROR_MESSAGE);
+                            }
+                        } catch (Exception e) {
+//                            logger.log(Level.SEVERE, "(this error coming at logging section in database with connect to find user) Error is " + e);
+                        }
+                    }
+                } catch (Exception e) {
+//                    logger.log(Level.SEVERE, "(this error coming at Thread section in Login.java) Error is " + e);
+                }
+            }
+        });
+        tread.start();
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -301,6 +393,7 @@ public class ClearViewLogin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JProgressBar loadingProgressBar;
     private javax.swing.JPasswordField password;
     private javax.swing.JTextField username;
     // End of variables declaration//GEN-END:variables

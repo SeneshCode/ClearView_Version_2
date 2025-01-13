@@ -37,5 +37,7 @@ public interface Variable {
 
 //  Slide Panel Array
     JPanel[] LINK_SLIDER_ARRAY = new JPanel[13];
-    
+
+//  Theme String
+    String LIGHT_THEME_STRING = "FlatMacLightLaf";
 }

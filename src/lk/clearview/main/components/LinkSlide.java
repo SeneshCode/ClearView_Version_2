@@ -23,7 +23,7 @@ public class LinkSlide extends JPanel {
      * @param icon the icon to set
      */
     public void setIcon(javax.swing.JLabel icon) {
-        this.icon = icon;
+        this.icons = icon;
     }
 
     /**
@@ -42,7 +42,7 @@ public class LinkSlide extends JPanel {
      */
     public LinkSlide(String iconLink, int width, int height) {
         initComponents();
-        getIcon().setIcon(new FlatSVGIcon(iconLink, width, height));
+        getIcons().setIcon(new FlatSVGIcon(iconLink, width, height));
         jPanel1.setBackground(UIManager.getColor("MOUSE_EXIT_BACKGROUND_COLOR"));
 //        this.putClientProperty(FlatClientProperties.STYLE, "arc:15");
         jPanel1.putClientProperty(FlatClientProperties.STYLE, "arc:15");
@@ -88,11 +88,11 @@ public class LinkSlide extends JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        icon = new javax.swing.JLabel();
+        icons = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        setMaximumSize(new java.awt.Dimension(200, 200));
+        setMaximumSize(new java.awt.Dimension(280, 60));
         setMinimumSize(new java.awt.Dimension(50, 60));
         setName(""); // NOI18N
         setPreferredSize(new java.awt.Dimension(50, 60));
@@ -113,7 +113,7 @@ public class LinkSlide extends JPanel {
         jPanel1.setMinimumSize(new java.awt.Dimension(50, 50));
         jPanel1.setPreferredSize(new java.awt.Dimension(200, 50));
 
-        icon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        icons.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         jLabel1.setFont(new java.awt.Font("Josefin Sans SemiBold", 0, 12)); // NOI18N
         jLabel1.setText("Dashboard");
@@ -123,10 +123,10 @@ public class LinkSlide extends JPanel {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(icon, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(7, 7, 7)
+                .addComponent(icons, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 62, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(10, 10, 10))
         );
         jPanel1Layout.setVerticalGroup(
@@ -135,7 +135,7 @@ public class LinkSlide extends JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(icon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(icons, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(12, 12, 12)
                         .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)))
@@ -148,7 +148,7 @@ public class LinkSlide extends JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(6, 6, 6)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
                 .addGap(6, 6, 6))
         );
         layout.setVerticalGroup(
@@ -181,7 +181,7 @@ public class LinkSlide extends JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel icon;
+    private javax.swing.JLabel icons;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
@@ -189,8 +189,8 @@ public class LinkSlide extends JPanel {
     /**
      * @return the icon
      */
-    public javax.swing.JLabel getIcon() {
-        return icon;
+    public javax.swing.JLabel getIcons() {
+        return icons;
     }
 
     /**

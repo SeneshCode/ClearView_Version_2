@@ -6,7 +6,7 @@
       <Color id="Default Cursor"/>
     </Property>
     <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[200, 200]"/>
+      <Dimension value="[280, 60]"/>
     </Property>
     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
       <Dimension value="[50, 60]"/>
@@ -38,7 +38,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-              <Component id="jPanel1" pref="124" max="32767" attributes="0"/>
+              <Component id="jPanel1" pref="50" max="32767" attributes="0"/>
               <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -74,10 +74,10 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
+                  <Component id="icons" min="-2" pref="40" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="icon" min="-2" pref="40" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jLabel1" pref="62" max="32767" attributes="0"/>
+                  <Component id="jLabel1" max="32767" attributes="0"/>
                   <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -88,7 +88,7 @@
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="icon" max="32767" attributes="0"/>
+                          <Component id="icons" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
                           <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
@@ -101,7 +101,7 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="icon">
+        <Component class="javax.swing.JLabel" name="icons">
           <Properties>
             <Property name="horizontalAlignment" type="int" value="0"/>
           </Properties>
