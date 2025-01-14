@@ -19,9 +19,10 @@
 - Activity Diagram - [Activity Diagram](https://online.visual-paradigm.com/share.jsp?id=333237333433342d35)
 - Project proposal - [Project proposal ClearView](https://1drv.ms/w/s!AlZVGvNYSWtljn1A8Oclivr3FLpL?e=zLqrSM)
 - Track Tasks - [Track Project Tasks](https://docs.google.com/spreadsheets/d/16YhA8w9VYWCigiyo6h95EXaUB0WBxx84EmUaNq9X16A/edit?gid=1919180471#gid=1919180471)
-- Icon Site - [Icons](https://icons8.com/icons/set/icons)
-- HeroIcon Site - [Icons](https://heroicons.com/outline)
-- SVG Site - [Storyset](https://storyset.com/)
+- Icon Site - [png icons](https://icons8.com/icons/set/icons)
+- HeroIcon Site - [svg icons](https://heroicons.com/outline)
+- SVG Repo - [svg icons](https://www.svgrepo.com/)
+- SVG Site - [Storyset for svg photos](https://storyset.com/)
 
 ## Dashboard of clear view 
 - **Dark Theme version**:
