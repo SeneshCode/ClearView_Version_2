@@ -444,7 +444,8 @@ public class ProfileSettings extends RoundPanelFix {
             login.setVisible(true);
         // Add your logout logic here
         } else if (option == JOptionPane.NO_OPTION) {
-            System.out.println("Logout cancelled.");
+//            System.out.println("Logout cancelled.");
+//            Clicked No Option
         }
     }//GEN-LAST:event_jButton6ActionPerformed
 
