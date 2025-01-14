@@ -22,7 +22,6 @@ public class ProfileSettings extends RoundPanelFix {
     /**
      * Creates new form ManagePatient
      */
-
     public ProfileSettings() {
         initComponents();
         jPanel1.setBackground(UIManager.getColor("BACKGROUND"));
@@ -30,12 +29,12 @@ public class ProfileSettings extends RoundPanelFix {
         jTabbedPane1.setBackground(UIManager.getColor("BACKGROUND"));
         setIcons();
     }
-    
-    private void setIcons(){
-         Icon profileIcon = new ImageIcon(getClass().getResource("../resources/profile.png"));
+
+    private void setIcons() {
+        Icon profileIcon = new ImageIcon(getClass().getResource("../resources/profile.png"));
         Icon settingsIcon = new ImageIcon(getClass().getResource("../resources/icons8-settings-22.png"));
-        jTabbedPane1.setIconAt(0, profileIcon );
-        jTabbedPane1.setIconAt(1, settingsIcon );
+        jTabbedPane1.setIconAt(0, profileIcon);
+        jTabbedPane1.setIconAt(1, settingsIcon);
     }
 
     /**
@@ -77,6 +76,9 @@ public class ProfileSettings extends RoundPanelFix {
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
         jSeparator3 = new javax.swing.JSeparator();
+        jLabel13 = new javax.swing.JLabel();
+        jButton6 = new javax.swing.JButton();
+        jSeparator4 = new javax.swing.JSeparator();
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lk/clearview/part/senesh/resources/icons8-settings-25.png"))); // NOI18N
@@ -169,7 +171,7 @@ public class ProfileSettings extends RoundPanelFix {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jComboBox2, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jTextField4)
+                                .addComponent(jTextField4, javax.swing.GroupLayout.DEFAULT_SIZE, 557, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButton1))
                             .addComponent(jTextField5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -193,10 +195,10 @@ public class ProfileSettings extends RoundPanelFix {
                                 .addComponent(jLabel8)
                                 .addGap(0, 0, Short.MAX_VALUE)))
                         .addContainerGap())))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(201, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 244, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -244,11 +246,17 @@ public class ProfileSettings extends RoundPanelFix {
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Reset Password");
+        jButton2.setMaximumSize(new java.awt.Dimension(120, 30));
+        jButton2.setMinimumSize(new java.awt.Dimension(120, 30));
+        jButton2.setPreferredSize(new java.awt.Dimension(120, 30));
 
         jButton3.setBackground(new java.awt.Color(0, 113, 242));
         jButton3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setText("Change Theme");
+        jButton3.setMaximumSize(new java.awt.Dimension(120, 30));
+        jButton3.setMinimumSize(new java.awt.Dimension(120, 30));
+        jButton3.setPreferredSize(new java.awt.Dimension(120, 30));
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -261,6 +269,9 @@ public class ProfileSettings extends RoundPanelFix {
         jButton5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton5.setForeground(new java.awt.Color(255, 255, 255));
         jButton5.setText("Delete Account");
+        jButton5.setMaximumSize(new java.awt.Dimension(120, 30));
+        jButton5.setMinimumSize(new java.awt.Dimension(120, 30));
+        jButton5.setPreferredSize(new java.awt.Dimension(120, 30));
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
@@ -270,6 +281,21 @@ public class ProfileSettings extends RoundPanelFix {
         jLabel11.setText("Permanently delete account");
 
         jLabel12.setText("Developed By EnovateX Team");
+
+        jLabel13.setText("Log Out the system");
+
+        jButton6.setBackground(new java.awt.Color(225, 172, 0));
+        jButton6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton6.setForeground(new java.awt.Color(255, 255, 255));
+        jButton6.setText("Log Out");
+        jButton6.setMaximumSize(new java.awt.Dimension(120, 30));
+        jButton6.setMinimumSize(new java.awt.Dimension(120, 30));
+        jButton6.setPreferredSize(new java.awt.Dimension(120, 30));
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -284,24 +310,29 @@ public class ProfileSettings extends RoundPanelFix {
                                 .addComponent(jLabel7)
                                 .addGap(32, 32, 32))
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addContainerGap(251, Short.MAX_VALUE)
+                                .addContainerGap(249, Short.MAX_VALUE)
                                 .addComponent(jLabel12)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 123, Short.MAX_VALUE)
-                        .addComponent(jButton2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 122, Short.MAX_VALUE)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel11)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton5))
+                                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel10)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton3))
+                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jSeparator1)
                             .addComponent(jSeparator2)
-                            .addComponent(jSeparator3))))
+                            .addComponent(jSeparator3)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel13)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jSeparator4))))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -309,23 +340,29 @@ public class ProfileSettings extends RoundPanelFix {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3)
+                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton5)
+                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel13))
+                .addGap(12, 12, 12)
+                .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel11))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 264, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 185, Short.MAX_VALUE)
                 .addComponent(jLabel12))
         );
 
@@ -387,8 +424,29 @@ public class ProfileSettings extends RoundPanelFix {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-        JOptionPane.showConfirmDialog(Dashboard.DASHBOARD, "Do you sure Delete your Account?","Are You sure",JOptionPane.ERROR_MESSAGE);
+        JOptionPane.showConfirmDialog(Dashboard.DASHBOARD, "Do you sure Delete your Account?", "Are You sure", JOptionPane.ERROR_MESSAGE);
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // Log Out The System
+        int option = JOptionPane.showConfirmDialog(
+                Dashboard.DASHBOARD, // Parent component
+                "Do you want to log out?", // Message
+                "Are You Sure?", // Title
+                JOptionPane.YES_NO_OPTION, // Option type
+                JOptionPane.WARNING_MESSAGE // Message type
+        );
+
+        // Handle the user's response
+        if (option == JOptionPane.YES_OPTION) {
+            Dashboard.DASHBOARD.dispose();
+            lk.clearview.main.Login login = new lk.clearview.main.Login();
+            login.setVisible(true);
+        // Add your logout logic here
+        } else if (option == JOptionPane.NO_OPTION) {
+            System.out.println("Logout cancelled.");
+        }
+    }//GEN-LAST:event_jButton6ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -397,11 +455,13 @@ public class ProfileSettings extends RoundPanelFix {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -415,6 +475,7 @@ public class ProfileSettings extends RoundPanelFix {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;

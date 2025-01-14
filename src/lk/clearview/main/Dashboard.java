@@ -206,44 +206,19 @@ public class Dashboard extends javax.swing.JFrame {
         }
     };
 //  end of dhanushka part
-//  start of 
-//    protected LinkSlide slide12 = new LinkSlide("lk/clearview/main/resources/dashboard.svg", Variable.SLIDE_ICON_SIZE, Variable.SLIDE_ICON_SIZE) {
-//        @Override
-//        public void setCommand() {
-//            changeClickPanel(getjPanel1());
-//            changeView();
-//        }
-//
-//        @Override
-//        public void initial() {
-//            setToolTipText("Manage Appointments");
-//        }
-//    };
-//    protected LinkSlide slide13 = new LinkSlide("lk/clearview/main/resources/dashboard.svg", Variable.SLIDE_ICON_SIZE, Variable.SLIDE_ICON_SIZE) {
-//        @Override
-//        public void setCommand() {
-//            changeClickPanel(getjPanel1());
-//            changeView();
-//        }
-//
-//        @Override
-//        public void initial() {
-//            setToolTipText("Manage Appointments");
-//        }
-//    };
-//    protected LinkSlide slide14 = new LinkSlide("lk/clearview/main/resources/dashboard.svg", Variable.SLIDE_ICON_SIZE, Variable.SLIDE_ICON_SIZE) {
-//        @Override
-//        public void setCommand() {
-//            changeClickPanel(getjPanel1());
-//            changeView();
-//        }
-//
-//        @Override
-//        public void initial() {
-//            setToolTipText("Manage Appointments");
-//        }
-//    };
+    protected LinkSlide isiri_slide1 = new LinkSlide("lk/clearview/part/isiri/resources/isiridashboard.svg", Variable.SLIDE_ICON_SIZE, Variable.SLIDE_ICON_SIZE) {
+        @Override
+        public void setCommand() {
+            changeClickPanel(getjPanel1());
+            changeView(new lk.clearview.part.isira.panel.ManageActivities());
+        }
 
+        @Override
+        public void initial() {
+            setToolTipText("Tool Tip text");
+            setText("New Slide Variable");
+        }
+    };
     /**
      * Creates new form Dashboard
      */
@@ -274,11 +249,10 @@ public class Dashboard extends javax.swing.JFrame {
         setSlide();
         setTheme2();
     }
-
+//  Last Part
     private void loadSide() {
         slider.setLayout(new BoxLayout(slider, BoxLayout.Y_AXIS));
         slider.add(slide1);
-
         switch (usertype) {
 //          Senesh
             case "optometrist doctor":
@@ -312,7 +286,7 @@ public class Dashboard extends javax.swing.JFrame {
                 break;
 //          Isiri
             case "finance":
-
+                slider.add(isiri_slide1);
                 break;
             default:
                 throw new AssertionError();
@@ -321,7 +295,7 @@ public class Dashboard extends javax.swing.JFrame {
 //        slider.add(slide13);
 //        slider.add(slide14);
     }
-
+//  Second Step
     private void setSlide() {
         Variable.LINK_SLIDER_ARRAY[0] = slide1.getjPanel1();
         Variable.LINK_SLIDER_ARRAY[1] = slide2.getjPanel1();
@@ -336,6 +310,7 @@ public class Dashboard extends javax.swing.JFrame {
         Variable.LINK_SLIDER_ARRAY[10] = slide10.getjPanel1();
         Variable.LINK_SLIDER_ARRAY[11] = slide11.getjPanel1();
         Variable.LINK_SLIDER_ARRAY[12] = slide12.getjPanel1();
+        Variable.LINK_SLIDER_ARRAY[13] = isiri_slide1.getjPanel1();
 
     }
 
@@ -403,8 +378,8 @@ public class Dashboard extends javax.swing.JFrame {
         theme_panel.setBackground(UIManager.getColor("CUSTOM_BACKGROUND"));
         slider.setBackground(UIManager.getColor("CUSTOM_BACKGROUND"));
 
-        theme.setIcon(new FlatSVGIcon(UIManager.getString("THEME"), 15, 15));
-        logo.setIcon(new FlatSVGIcon(UIManager.getString("LOGO"), 42, 23));
+        theme.setIcon(new FlatSVGIcon("lk/clearview/main/resources/theme.svg", 15, 15));
+        logo.setIcon(new FlatSVGIcon("lk/clearview/main/resources/logo.svg", 42, 23));
 
         setDashboard();
 
