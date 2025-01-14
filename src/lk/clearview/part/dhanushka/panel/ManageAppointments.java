@@ -41,8 +41,6 @@ public class ManageAppointments extends RoundPanelFix {
 
         setOpaque(false);
 
-        jPanel4.setOpaque(false);
-
         jLabel1.setFont(new java.awt.Font("Poppins ExtraBold", 1, 24)); // NOI18N
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lk/clearview/part/dhanushka/resources/Appointment-22.png"))); // NOI18N
         jLabel1.setText("Manage Appoinments");
@@ -52,20 +50,17 @@ public class ManageAppointments extends RoundPanelFix {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(25, 25, 25)
+                .addGap(12, 12, 12)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap(20, Short.MAX_VALUE)
+                .addGap(12, 12, 12)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jPanel5.setOpaque(false);
-
-        jComboBox1.setBackground(new java.awt.Color(3, 96, 255));
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Appointment Order", "Patient Name ASC", "Patient Name DESC", "Doctor Name ASC", "Doctor Name DESC", "Date of Birth ASC", "Date of Birth DESC", "Register Date ASC", "Register Date DESC" }));
 
         jTextField1.setText("Search Appoinment using patient Name or Doctor Name");
@@ -99,8 +94,6 @@ public class ManageAppointments extends RoundPanelFix {
             }
         });
 
-        jPanel6.setOpaque(false);
-
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null},
@@ -130,20 +123,20 @@ public class ManageAppointments extends RoundPanelFix {
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addGap(25, 25, 25)
+                .addGap(12, 12, 12)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton3)))
-                .addGap(25, 25, 25))
+                .addGap(12, 12, 12))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -156,7 +149,7 @@ public class ManageAppointments extends RoundPanelFix {
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(25, 25, 25))
+                .addGap(12, 12, 12))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

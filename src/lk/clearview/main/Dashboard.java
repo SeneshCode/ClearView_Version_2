@@ -5,28 +5,17 @@
 package lk.clearview.main;
 
 import com.formdev.flatlaf.FlatClientProperties;
-import com.formdev.flatlaf.FlatDarkLaf;
 import com.formdev.flatlaf.FlatLaf;
-import com.formdev.flatlaf.FlatLightLaf;
 import com.formdev.flatlaf.extras.FlatSVGIcon;
 import com.formdev.flatlaf.themes.FlatMacDarkLaf;
 import com.formdev.flatlaf.themes.FlatMacLightLaf;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.FontFormatException;
-import java.awt.GraphicsEnvironment;
-import java.awt.event.ComponentAdapter;
-import java.awt.event.ComponentEvent;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import java.io.File;
-import java.io.IOException;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.LookAndFeel;
@@ -166,6 +155,20 @@ public class Dashboard extends javax.swing.JFrame {
             setToolTipText("Manage Staff");
         }
     };
+    protected LinkSlide isiraslide1 = new LinkSlide("lk/clearview/part/isira/resources/isiradashboardicon.svg", Variable.SLIDE_ICON_SIZE, Variable.SLIDE_ICON_SIZE) {
+        @Override
+        public void setCommand() {
+            changeClickPanel(getjPanel1());
+            changeView(new lk.clearview.part.isira.panel.ManageStaff());
+        }
+
+        @Override
+        public void initial() {
+            setToolTipText("Manage Staff");
+            setText("Slide Button");
+        }
+    };
+    
 //  end of isira part
 //  start dhanushka part
     protected LinkSlide slide10 = new LinkSlide("lk/clearview/main/resources/dashboard.svg", Variable.SLIDE_ICON_SIZE, Variable.SLIDE_ICON_SIZE) {
@@ -206,6 +209,7 @@ public class Dashboard extends javax.swing.JFrame {
         }
     };
 //  end of dhanushka part
+//  start of isiri part
     protected LinkSlide isiri_slide1 = new LinkSlide("lk/clearview/part/isiri/resources/isiridashboard.svg", Variable.SLIDE_ICON_SIZE, Variable.SLIDE_ICON_SIZE) {
         @Override
         public void setCommand() {
@@ -219,6 +223,20 @@ public class Dashboard extends javax.swing.JFrame {
             setText("New Slide Variable");
         }
     };
+    protected LinkSlide isiri_slide2 = new LinkSlide("lk/clearview/part/isiri/resources/isiribattryicon.svg", Variable.SLIDE_ICON_SIZE, Variable.SLIDE_ICON_SIZE) {
+        @Override
+        public void setCommand() {
+            changeClickPanel(getjPanel1());
+            changeView(new lk.clearview.part.dhanushka.panel.ManageAppointments());
+        }
+
+        @Override
+        public void initial() {
+            setToolTipText("");
+            setText("Second Button");
+        }
+    };
+//   end of isiri part
     /**
      * Creates new form Dashboard
      */
@@ -249,7 +267,7 @@ public class Dashboard extends javax.swing.JFrame {
         setSlide();
         setTheme2();
     }
-//  Last Part
+//  login Part
     private void loadSide() {
         slider.setLayout(new BoxLayout(slider, BoxLayout.Y_AXIS));
         slider.add(slide1);
@@ -270,6 +288,7 @@ public class Dashboard extends javax.swing.JFrame {
             case "admin":
                 slider.add(slide8);
                 slider.add(slide9);
+                slider.add(isiraslide1);
                 break;
 //          Dhanushka
             case "receptionist":
@@ -287,6 +306,8 @@ public class Dashboard extends javax.swing.JFrame {
 //          Isiri
             case "finance":
                 slider.add(isiri_slide1);
+                slider.add(isiri_slide2);
+                
                 break;
             default:
                 throw new AssertionError();
@@ -295,7 +316,7 @@ public class Dashboard extends javax.swing.JFrame {
 //        slider.add(slide13);
 //        slider.add(slide14);
     }
-//  Second Step
+//  Second part
     private void setSlide() {
         Variable.LINK_SLIDER_ARRAY[0] = slide1.getjPanel1();
         Variable.LINK_SLIDER_ARRAY[1] = slide2.getjPanel1();
@@ -311,6 +332,8 @@ public class Dashboard extends javax.swing.JFrame {
         Variable.LINK_SLIDER_ARRAY[11] = slide11.getjPanel1();
         Variable.LINK_SLIDER_ARRAY[12] = slide12.getjPanel1();
         Variable.LINK_SLIDER_ARRAY[13] = isiri_slide1.getjPanel1();
+        Variable.LINK_SLIDER_ARRAY[14] = isiraslide1.getjPanel1();
+        Variable.LINK_SLIDER_ARRAY[15] = isiri_slide2.getjPanel1();
 
     }
 
@@ -494,7 +517,7 @@ public class Dashboard extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(221, Short.MAX_VALUE))
+                        .addContainerGap(377, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -732,7 +755,7 @@ public class Dashboard extends javax.swing.JFrame {
                 .addGap(12, 12, 12)
                 .addComponent(roundPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12)
-                .addComponent(panelHolder, javax.swing.GroupLayout.DEFAULT_SIZE, 614, Short.MAX_VALUE)
+                .addComponent(panelHolder, javax.swing.GroupLayout.DEFAULT_SIZE, 770, Short.MAX_VALUE)
                 .addGap(12, 12, 12))
         );
         jPanel1Layout.setVerticalGroup(
@@ -741,7 +764,7 @@ public class Dashboard extends javax.swing.JFrame {
                 .addGap(12, 12, 12)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(roundPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(panelHolder, javax.swing.GroupLayout.DEFAULT_SIZE, 581, Short.MAX_VALUE))
+                    .addComponent(panelHolder))
                 .addGap(12, 12, 12))
         );
 
@@ -924,7 +947,7 @@ public class Dashboard extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new Dashboard("200328712369", "optometrist doctor", "Senesh", "Pawan").setVisible(true);
+                new Dashboard("200328712369", "finance", "Senesh", "Pawan").setVisible(true);
             }
         });
     }

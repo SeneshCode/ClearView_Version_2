@@ -36,7 +36,7 @@ public interface Variable {
     Font DEFAULT_FONT = new Font("Josefin Sans Regular", Font.PLAIN, 13);
 
 //  Slide Panel Array
-    JPanel[] LINK_SLIDER_ARRAY = new JPanel[14];
+    JPanel[] LINK_SLIDER_ARRAY = new JPanel[16];
 
 //  Theme String
     String LIGHT_THEME_STRING = "FlatMacLightLaf";
