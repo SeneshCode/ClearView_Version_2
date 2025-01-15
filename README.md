@@ -10,9 +10,10 @@
 - **Dhanushka**: Receptionist
 - **Isiri**: Finance
 
-## MySQL Database 
+## Getting Started Resources
 
-- Database Google Drive Link  - [Download MySQL Database](https://drive.google.com/drive/folders/1UcJShfu3SfnPhUE_UxamXRQiX7mU1keP?usp=sharing)
+- MySQL Database Google Drive Link  - [Download MySQL Database](https://drive.google.com/drive/folders/1UcJShfu3SfnPhUE_UxamXRQiX7mU1keP?usp=sharing)
+- Work Flow Helper of Clear View Project - [View of Work Flow Helper](https://1drv.ms/w/c/4ba2052d68c74c09/EbsXzfGrOEFOo4TlMZy7XEABb1kLaO88Gh8Unx0I_zrSqg?e=Jp5Yuz)
 
 ## Links
 
