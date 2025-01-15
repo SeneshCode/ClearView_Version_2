@@ -12,7 +12,7 @@
 
 ## Getting Started Resources
 
-- MySQL Database Google Drive Link - [MySQL](https://drive.google.com/drive/folders/1UcJShfu3SfnPhUE_UxamXRQiX7mU1keP?usp=sharing)
+- MySQL Database Google Drive Link - [DataBase](https://drive.google.com/drive/folders/1UcJShfu3SfnPhUE_UxamXRQiX7mU1keP?usp=sharing)
 - Work Flow Helper of Clear View Project - [Work Flow](https://1drv.ms/w/c/4ba2052d68c74c09/EbsXzfGrOEFOo4TlMZy7XEABb1kLaO88Gh8Unx0I_zrSqg?e=Jp5Yuz)
 
 ## Links
