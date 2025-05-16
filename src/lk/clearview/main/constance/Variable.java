@@ -6,6 +6,7 @@ package lk.clearview.main.constance;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -40,4 +41,7 @@ public interface Variable {
 
 //  Theme String
     String LIGHT_THEME_STRING = "FlatMacLightLaf";
+    
+//   Logger File
+    public static final Logger logger = Logger.getLogger("ClearView"); 
 }

@@ -13,9 +13,13 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.sql.ResultSet;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.LookAndFeel;
@@ -24,6 +28,8 @@ import javax.swing.Timer;
 import javax.swing.UIManager;
 import lk.clearview.main.components.LinkSlide;
 import lk.clearview.main.constance.Variable;
+import lk.clearview.main.model.MYSQL;
+import lk.clearview.main.model.NetworkChecker;
 import lk.clearview.main.panel.DashboardPanel;
 import lk.clearview.main.panel.ThemePanel;
 
@@ -33,6 +39,8 @@ import lk.clearview.main.panel.ThemePanel;
  */
 public class Dashboard extends javax.swing.JFrame {
 
+    public JPanel jpanelColorSet;
+    public String MyTheme;
     public static Dashboard DASHBOARD;
     protected String username;
     protected String firstname;
@@ -168,7 +176,7 @@ public class Dashboard extends javax.swing.JFrame {
             setText("Slide Button");
         }
     };
-    
+
 //  end of isira part
 //  start dhanushka part
     protected LinkSlide slide10 = new LinkSlide("lk/clearview/main/resources/dashboard.svg", Variable.SLIDE_ICON_SIZE, Variable.SLIDE_ICON_SIZE) {
@@ -237,11 +245,13 @@ public class Dashboard extends javax.swing.JFrame {
         }
     };
 //   end of isiri part
+
     /**
      * Creates new form Dashboard
      */
     public Dashboard(String username, String user_type, String FirstName, String LastName) {
         initComponents();
+        checkTheme();
         this.username = username;
         this.usertype = user_type;
         this.firstname = FirstName;
@@ -251,6 +261,29 @@ public class Dashboard extends javax.swing.JFrame {
         DASHBOARD = this;
         changeView(new DashboardPanel());
         changeClickPanel(slide1.getjPanel1());
+        checkIsOnine();
+    }
+
+    public static void checkIsOnine() {
+        Thread internetCheckThread = new Thread(() -> {
+            while (true) {
+                boolean isConnected = NetworkChecker.isOnline();
+                if (!isConnected) {
+                    JOptionPane.showMessageDialog(Dashboard.DASHBOARD, "Please check your internet connection!", "Connection Error", JOptionPane.WARNING_MESSAGE);
+                    System.exit(0);
+                }
+                try {
+                    // Wait for 5 second (5,000 milliseconds)
+                    Thread.sleep(5000);
+                } catch (InterruptedException e) {
+//                    e.printStackTrace();
+                    Variable.logger.log(Level.SEVERE, "(Connection Error) Server Interrupted Exception :" + e);
+                } catch (Exception e) {
+                    Variable.logger.log(Level.SEVERE, "(Connection Error) Application Exception Exception :" + e);
+                }
+            }
+        });
+        internetCheckThread.start();
     }
 
     public void init() {
@@ -268,6 +301,7 @@ public class Dashboard extends javax.swing.JFrame {
         setTheme2();
     }
 //  login Part
+
     private void loadSide() {
         slider.setLayout(new BoxLayout(slider, BoxLayout.Y_AXIS));
         slider.add(slide1);
@@ -307,7 +341,7 @@ public class Dashboard extends javax.swing.JFrame {
             case "finance":
                 slider.add(isiri_slide1);
                 slider.add(isiri_slide2);
-                
+
                 break;
             default:
                 throw new AssertionError();
@@ -317,6 +351,7 @@ public class Dashboard extends javax.swing.JFrame {
 //        slider.add(slide14);
     }
 //  Second part
+
     private void setSlide() {
         Variable.LINK_SLIDER_ARRAY[0] = slide1.getjPanel1();
         Variable.LINK_SLIDER_ARRAY[1] = slide2.getjPanel1();
@@ -345,6 +380,7 @@ public class Dashboard extends javax.swing.JFrame {
 
     //load colors panel at click
     public void changeClickPanel(JPanel panel1) {
+        jpanelColorSet = panel1;
         for (int i = 0; i < Variable.LINK_SLIDER_ARRAY.length; i++) {
             if (Variable.LINK_SLIDER_ARRAY[i] == panel1) {
                 panel1.setBackground(UIManager.getColor("CLICK_COLOR"));
@@ -362,6 +398,25 @@ public class Dashboard extends javax.swing.JFrame {
         } else {
             setting_panel.setBackground(UIManager.getColor("CUSTOM_BACKGROUND"));
         }
+    }
+
+    public void checkTheme() {
+        try {
+            ResultSet rs = MYSQL.search("SELECT * FROM `theme` WHERE `theme`.`id` = 1");
+            rs.next();
+            MyTheme = rs.getString("theme");
+        } catch (Exception ex) {
+            Variable.logger.log(Level.SEVERE, "Search Theme Error: ", ex);
+        }
+        FlatLafRegisterCustomDefaultsSource();
+        if ("DARK".equals(MyTheme)) {
+            FlatMacDarkLaf.setup();
+        } else {
+            FlatMacLightLaf.setup();
+
+        }
+        SwingUtilities.updateComponentTreeUI(this);
+
     }
 
     public void initial() {
@@ -389,10 +444,6 @@ public class Dashboard extends javax.swing.JFrame {
 
     }
 
-    private void setDashboard() {
-//        JPanel panel = slide1.getjPanel1();
-//        changeClickPanel(panel);
-    }
 
     private void setTheme() {
 
@@ -403,8 +454,7 @@ public class Dashboard extends javax.swing.JFrame {
 
         theme.setIcon(new FlatSVGIcon("lk/clearview/main/resources/theme.svg", 15, 15));
         logo.setIcon(new FlatSVGIcon("lk/clearview/main/resources/logo.svg", 42, 23));
-
-        setDashboard();
+;
 
     }
 
@@ -420,8 +470,18 @@ public class Dashboard extends javax.swing.JFrame {
         FlatLafRegisterCustomDefaultsSource();
         if (getTheme.getClass().getSimpleName().equals(Variable.LIGHT_THEME_STRING)) {
             FlatMacDarkLaf.setup();
+            try {
+                MYSQL.update("UPDATE `theme` SET `theme` = 'DARK' WHERE `id` = 1");
+            } catch (Exception ex) {
+                Variable.logger.log(Level.SEVERE, "Updating Dark Theme , When Error: ", ex);
+            }
         } else {
             FlatMacLightLaf.setup();
+            try {
+                MYSQL.update("UPDATE `theme` SET `theme` = 'LIGHT' WHERE `id` = 1");
+            } catch (Exception ex) {
+                Variable.logger.log(Level.SEVERE, "Updating Light Theme , When Error: ", ex);
+            }
         }
         SwingUtilities.updateComponentTreeUI(this);
         setTheme();
@@ -537,7 +597,7 @@ public class Dashboard extends javax.swing.JFrame {
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(111, 111, 111)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(161, Short.MAX_VALUE))
+                .addContainerGap(178, Short.MAX_VALUE))
         );
 
         panelHolder.add(jPanel3, java.awt.BorderLayout.CENTER);
@@ -593,8 +653,8 @@ public class Dashboard extends javax.swing.JFrame {
             setting_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(setting, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, setting_panelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(setting_label, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addComponent(setting_label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -633,8 +693,8 @@ public class Dashboard extends javax.swing.JFrame {
             theme_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(theme, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, theme_panelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(theme_label, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addComponent(theme_label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -643,7 +703,7 @@ public class Dashboard extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(8, 8, 8)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jSeparator1)
                     .addComponent(setting_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -687,7 +747,7 @@ public class Dashboard extends javax.swing.JFrame {
         jLabel2.setText("View");
         theme_panel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(113, 6, -1, -1));
 
-        jLabel3.setFont(new java.awt.Font("Josefin Sans", 0, 12)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Josefin Sans", 0, 11)); // NOI18N
         jLabel3.setText("Senesh Pawan");
         theme_panel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(58, 24, 110, 20));
 
@@ -755,7 +815,7 @@ public class Dashboard extends javax.swing.JFrame {
                 .addGap(12, 12, 12)
                 .addComponent(roundPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12)
-                .addComponent(panelHolder, javax.swing.GroupLayout.DEFAULT_SIZE, 770, Short.MAX_VALUE)
+                .addComponent(panelHolder)
                 .addGap(12, 12, 12))
         );
         jPanel1Layout.setVerticalGroup(
@@ -812,8 +872,9 @@ public class Dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_theme_panelMouseExited
 
     private void theme_panelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_theme_panelMouseClicked
-        // ChanageTheme
+        // ChangeTheme
         changeTheme();
+        jpanelColorSet = null;
     }//GEN-LAST:event_theme_panelMouseClicked
 
     private void setting_panelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_setting_panelMouseClicked
@@ -887,12 +948,14 @@ public class Dashboard extends javax.swing.JFrame {
                 SwingUtilities.updateComponentTreeUI(roundPanel1);  // Update the panel size
             } else {
                 ((Timer) e.getSource()).stop();  // Stop the timer once the target width is reached
+                if (jpanelColorSet != null) {
+                    changeClickPanel(jpanelColorSet);
+                }
             }
         });
 
         // Start the timer
         timer.start();
-
     }
 
     public void collaps() {
@@ -908,10 +971,13 @@ public class Dashboard extends javax.swing.JFrame {
             if (currentWidth > targetWidth) {
                 currentWidth -= 10;  // Decrease width by 2 pixels
                 roundPanel1.setPreferredSize(new Dimension(currentWidth, roundPanel1.getHeight()));
-                SwingUtilities.updateComponentTreeUI(roundPanel1);  // Update the panel size
 //                clickColorAccurate();
+                SwingUtilities.updateComponentTreeUI(roundPanel1);  // Update the panel size
             } else {
                 ((Timer) e.getSource()).stop();  // Stop the timer once the target width is reached
+                if (jpanelColorSet != null) {
+                    changeClickPanel(jpanelColorSet);
+                }
             }
         });
 

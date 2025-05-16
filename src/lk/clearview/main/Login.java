@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package lk.clearview.main;
 
 import com.formdev.flatlaf.FlatClientProperties;
@@ -13,39 +9,57 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.sql.ResultSet;
 import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.LookAndFeel;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import static lk.clearview.main.Dashboard.FlatLafRegisterCustomDefaultsSource;
+import static lk.clearview.main.Dashboard.checkIsOnine;
 import lk.clearview.main.constance.Variable;
 import lk.clearview.main.model.MYSQL;
+import lk.clearview.main.model.NetworkChecker;
+import static lk.clearview.main.model.NetworkChecker.isOnline;
 import lk.clearview.main.panel.ThemePanel;
 
-/**
- *
- * @author EnovateX Team
- */
 public class Login extends javax.swing.JFrame {
 
-    /**
-     * Creates new form DoctorLogin
-     */
+    String theme;
+
     public Login() {
         initComponents();
         this.setIconImage(new ImageIcon(getClass().getResource("./resources/lightlogo.png")).getImage());
 //        this.setIconImage(new ImageIcon(getClass().getResource("../resources/eye-35.png")).getImage());
         init2();
-        setThemeOfLogin();
         loadingProgressBar.setVisible(false);
         jPanel1.putClientProperty(FlatClientProperties.STYLE, "arc:15");
+        Dashboard.checkIsOnine();
     }
 
 //    private void setSvg(){
 //        String path = getClass().getResource("../resources/login.svg").toString();
 //        jLabel1.setIcon(new FlatSVGIcon("../resources/login.svg",352,438));
 //    }
+    public void checkTheme() {
+        try {
+            ResultSet rs = MYSQL.search("SELECT * FROM `theme` WHERE `theme`.`id` = 1");
+            rs.next();
+            theme = rs.getString("theme");
+        } catch (Exception ex) {
+            Variable.logger.log(Level.SEVERE, "Search Theme Error: ", ex);
+        }
+        FlatLafRegisterCustomDefaultsSource();
+        if ("DARK".equals(theme)) {
+            FlatMacDarkLaf.setup();
+        } else {
+            FlatMacLightLaf.setup();
+
+        }
+        SwingUtilities.updateComponentTreeUI(this);
+        
+    }
+
     private void setThemeOfLogin() {
         LookAndFeel getTheme = UIManager.getLookAndFeel();
         if (getTheme.getClass().getSimpleName().equals(Variable.LIGHT_THEME_STRING)) {
@@ -78,9 +92,19 @@ public class Login extends javax.swing.JFrame {
         if (getTheme.getClass().getSimpleName().equals(Variable.LIGHT_THEME_STRING)) {
             FlatLafRegisterCustomDefaultsSource();
             FlatMacDarkLaf.setup();
+            try {
+                MYSQL.update("UPDATE `theme` SET `theme` = 'DARK' WHERE `id` = 1");
+            } catch (Exception ex) {
+                Variable.logger.log(Level.SEVERE, "Updating Dark Theme Error: ", ex);
+            }
         } else {
             FlatLafRegisterCustomDefaultsSource();
             FlatMacLightLaf.setup();
+            try {
+                MYSQL.update("UPDATE `theme` SET `theme` = 'LIGHT' WHERE `id` = 1");
+            } catch (Exception ex) {
+                Variable.logger.log(Level.SEVERE, "Updating Light Theme Error: ", ex);
+            }
         }
         SwingUtilities.updateComponentTreeUI(this);
         setThemeOfLogin();
@@ -380,11 +404,11 @@ public class Login extends javax.swing.JFrame {
                                 JOptionPane.showMessageDialog(Login.this, "Invalid Username or Password!", "Warning", JOptionPane.ERROR_MESSAGE);
                             }
                         } catch (Exception e) {
-//                            logger.log(Level.SEVERE, "(this error coming at logging section in database with connect to find user) Error is " + e);
+                            Variable.logger.log(Level.SEVERE, "(this error coming at logging section in database with connect to find user) Error is " + e);
                         }
                     }
                 } catch (Exception e) {
-//                    logger.log(Level.SEVERE, "(this error coming at Thread section in Login.java) Error is " + e);
+                    Variable.logger.log(Level.SEVERE, "(this error coming at Thread section in Login.java) Error is " + e);
                 }
             }
         });
@@ -399,14 +423,15 @@ public class Login extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         FlatLafRegisterCustomDefaultsSource();
         FlatMacLightLaf.setup();
-//        FlatMacDarkLaf.setup();
 
         UIManager.put("defaultFont", Variable.DEFAULT_FONT);
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Login().setVisible(true);
+                Login l = new Login();
+                l.setVisible(true);
+                l.checkTheme();
             }
         });
     }

@@ -442,6 +442,7 @@ public class ProfileSettings extends RoundPanelFix {
             Dashboard.DASHBOARD.dispose();
             lk.clearview.main.Login login = new lk.clearview.main.Login();
             login.setVisible(true);
+            login.checkTheme();
         // Add your logout logic here
         } else if (option == JOptionPane.NO_OPTION) {
 //            System.out.println("Logout cancelled.");
